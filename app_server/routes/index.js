@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var ctrlMain = require("../controllers/main");
 
-router.get('/', function(req, res){
-	res.sendFile('index.html', { root: "./views" })
-});
+/*
+ * GET home page.
+ */
+router.get('/', ctrlMain.home);
 
 //export this router to use in our index.js
 module.exports = router;

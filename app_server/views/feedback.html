@@ -42,31 +42,57 @@
         <title>Opioid Webpage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 </head>
 
 
 <body>
 
-<h3>Feedback Form</h3>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 
-<div>
-  <form action="/action_page.php">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <!-- <a href="/home"><h2 class="center" >Opioid Webpage</h2></a> -->
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/home">Homepage</a>
+      <a href="/StateVsDeath">State vs Opioid Deaths</a>
+      <a href="/StateVsPop">State vs Population</a>
+      <a href="/feedback">Feedback</a>
+      <!-- <a href="#">About Us</a> -->
+    </div>
 
-    <label for="state">State</label>
-    <select id="state" name="state">
-      <option value="California">California</option>
-      <option value="Texas">Texas</option>
-      <option value="New York">New York</option>
-    </select>
-  
-    <input type="submit" value="Submit">
-  </form>
-</div>
+    <h2>Feedback Form</h2>
+
+    <div class="box">
+      <form action="/action_page.php">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+        <label for="state">State</label>
+        <select id="state" name="state">
+          <option value="California">California</option>
+          <option value="Texas">Texas</option>
+          <option value="New York">New York</option>
+        </select>
+      
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+<script>
+    
+    function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+</script>
 
 </body>
 </html>

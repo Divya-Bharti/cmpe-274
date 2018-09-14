@@ -37,8 +37,11 @@
 }
 
 h2 {
-    text-align: center;
     color: black;
+    display: inline-block;
+    text-align: center;
+    padding-left: 600px;
+    /*font-size: 20px;*/
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -57,5 +60,12 @@ h2 {
     fill: #5555;
     stroke-dasharray: 5;
     stroke: black;
+}
+
+p {
+    /*padding: 25px 50px 75px 100px;*/
+    padding-top: 25px;
+    padding-right: 50px;
+    padding-left: 100px;
 }
 

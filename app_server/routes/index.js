@@ -7,5 +7,10 @@ var ctrlMain = require("../controllers/main");
  */
 router.get('/', ctrlMain.home);
 
+// router.get('/', ctrlMain.feedback);
+
+// router.get('/feedback', ctrlMain.feedback);
+
+
 //export this router to use in our index.js
 module.exports = router;

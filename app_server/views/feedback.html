@@ -54,10 +54,9 @@
           <option value="New York">New York</option>
         </select>
         <!-- <input type="submit" value="Submit" id="myBtn"> -->
-        
       </form>
 
-    <button id="myBtn" type="submit">Submit</button>
+    <button id="myBtn">Submit</button>
 
     </div>
 
@@ -85,17 +84,7 @@
 
 </div>
 
-<script>
-    
-    function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-    }
-
-</script>
+<script type="text/javascript" src="/routes/nav.js"></script>
 
 <script>
       $( function() {
@@ -108,8 +97,6 @@
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');
-
-// var name = document.getElementsById('fname').value + document.getElementsById('name').value;
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
@@ -126,7 +113,7 @@ btn.onclick = function() {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
-}s
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -139,12 +126,12 @@ function submitFeedback() {
     var fname = document.getElementById("fname");
     var lname = document.getElementById("lname");
     var email = document.getElementById("email")
-    var output = "<p>Thank you "
-    output += fname.value + " " + lname.value
-    output += ", for your valuable feedback. We will contact you at "
+    var output = "<p>Thank you ";
+    output += fname.value + " " + lname.value;
+    output += ", for your valuable feedback. We will contact you at ";
     
-    output += email.value
-    output += ".</p>"
+    output += email.value;
+    output += ".</p>";
 
     document.getElementById("thanks").innerHTML = output;
 }

@@ -10,7 +10,7 @@ router.get('/', ctrlMain.get_feedback);
 /*
  * POST home page.
  */
-router.post('/', ctrlMain.post_feedback);
+// router.post('/', ctrlMain.post_feedback);
 
 //export this router to use in our index.js
 module.exports = router;

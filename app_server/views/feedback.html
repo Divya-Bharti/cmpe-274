@@ -1,40 +1,4 @@
-<!-- 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Opioid Webpage</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
-    </head>
 
-    <body>
-        <h3>Contact Form</h3>
-        ​
-        <div class="container">
-            <form>
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
-                ​
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                ​
-                <label for="state">Country</label>
-                <select id="state" name="state">
-                    <option value="CA">California</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="TX">Texas</option>
-                </select>
-                ​
-                <label for="subject">Subject</label>
-                <textarea id="subject" name="feedback" placeholder="Please give us feedback.." style="height:200px"></textarea>
-                ​
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-    ​
-    </body>
-</html> -->
-​
 <!DOCTYPE html>
 <html>
 
@@ -43,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
         <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -69,7 +34,7 @@
     <h2>Feedback Form</h2>
 
     <div class="box">
-      <form action="feedback" method="post">
+      <form action="feedback" >
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
@@ -88,10 +53,37 @@
           <option value="Texas">Texas</option>
           <option value="New York">New York</option>
         </select>
-      
-        <input type="submit" value="Submit">
+        <!-- <input type="submit" value="Submit" id="myBtn"> -->
+        
       </form>
+
+    <button id="myBtn" type="submit">Submit</button>
+
     </div>
+
+
+
+<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+       <!-- <h2>Modal Header</h2> -->
+    </div>
+    <div class="modal-body" id="thanks">
+      
+    </div>
+     <div class="modal-footer">
+      <!-- <h3>Modal Footer</h3> -->
+    </div>
+  </div>
+
+</div>
 
 <script>
     
@@ -109,6 +101,54 @@
       $( function() {
         $( "#datepicker" ).datepicker();
       } );
+</script>
+
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// var name = document.getElementsById('fname').value + document.getElementsById('name').value;
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    submitFeedback();
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}s
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+function submitFeedback() {
+    var fname = document.getElementById("fname");
+    var lname = document.getElementById("lname");
+    var email = document.getElementById("email")
+    var output = "<p>Thank you "
+    output += fname.value + " " + lname.value
+    output += ", for your valuable feedback. We will contact you at "
+    
+    output += email.value
+    output += ".</p>"
+
+    document.getElementById("thanks").innerHTML = output;
+}
+
 </script>
 
 </body>

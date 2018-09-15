@@ -19,7 +19,7 @@ module.exports.get_feedback = function(request, result)
  */
 module.exports.post_feedback = function(request, result) 
 {
-    result.send("Thank you for your feedback");
+     //result.send("Thank you for your feedback");
 };
 
 /*

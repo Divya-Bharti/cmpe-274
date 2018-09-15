@@ -43,6 +43,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
         <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 
@@ -57,6 +61,7 @@
       <a href="/home">Homepage</a>
       <a href="/StateVsDeath">State vs Opioid Deaths</a>
       <a href="/StateVsPop">State vs Population</a>
+      <a href="/heatmap">HeatMap</a>
       <a href="/feedback">Feedback</a>
       <!-- <a href="#">About Us</a> -->
     </div>
@@ -70,6 +75,12 @@
 
         <label for="lname">Last Name</label>
         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+        <label for="email">Email id</label>
+        <input type="text" id="email" name="emailid" placeholder="Your email id">
+
+        <label for="dob">Date of Birth</label>
+        <input type="text" id="datepicker">
 
         <label for="state">State</label>
         <select id="state" name="state">
@@ -92,6 +103,12 @@
         document.getElementById("mySidenav").style.width = "0";
     }
 
+</script>
+
+<script>
+      $( function() {
+        $( "#datepicker" ).datepicker();
+      } );
 </script>
 
 </body>

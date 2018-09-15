@@ -14,4 +14,5 @@ app.use('/feedback', feedback);
 app.use('/StateVsDeath', StateVsDeath);
 app.use('/StateVsPop', StateVsPop);
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/app_server"));
 app.listen(3000);

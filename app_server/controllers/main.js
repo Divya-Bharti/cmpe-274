@@ -9,9 +9,17 @@ module.exports.home = function(request, result)
 /*
  * GET feedback.
  */
-module.exports.feedback = function(request, result) 
+module.exports.get_feedback = function(request, result) 
 {
     result.sendFile('feedback.html',{ root: "./app_server/views" });
+};
+
+/*
+ * POST feedback.
+ */
+module.exports.post_feedback = function(request, result) 
+{
+    result.send("Thank you for your feedback");
 };
 
 /*

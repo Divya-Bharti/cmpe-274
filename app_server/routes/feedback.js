@@ -5,9 +5,12 @@ var ctrlMain = require("../controllers/main");
 /*
  * GET home page.
  */
-// router.get('/feedback', ctrlMain.home);
+router.get('/', ctrlMain.get_feedback);
 
-router.get('/', ctrlMain.feedback);
+/*
+ * POST home page.
+ */
+router.post('/', ctrlMain.post_feedback);
 
 //export this router to use in our index.js
 module.exports = router;

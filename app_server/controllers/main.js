@@ -37,3 +37,12 @@ module.exports.StateVsPop = function(request, result)
 {
     result.sendFile('StateVsPop.html',{ root: "./app_server/views" });
 };
+
+/*
+ * GET heatmap.
+ */
+module.exports.heatmap = function(request, result) 
+{
+    result.sendFile('heatmap.html',{ root: "./app_server/views" });
+};
+

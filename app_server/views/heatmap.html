@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+</head>
+<body>
+
+   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+    <!-- <a href="/home"><h2 class="center" >Opioid Webpage</h2></a> -->
+
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/home">Homepage</a>
+      <a href="/StateVsDeath">State vs Opioid Deaths</a>
+      <a href="/StateVsPop">State vs Population</a>
+      <a href="/heatmap">HeatMap</a>
+      <a href="/feedback">Feedback</a>
+      <!-- <a href="#">About Us</a> -->
+    </div>
+
 <div class='tableauPlaceholder' id='viz1536887518738' style='position: relative'>
    <noscript><a href='#'><img alt='Sheet 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Op&#47;Opioids_1_0&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript>
    <object class='tableauViz'  style='display:none;'>
@@ -24,3 +45,18 @@
    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
 </script>
+
+<script>
+   
+   function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+   }
+
+   function closeNav() {
+       document.getElementById("mySidenav").style.width = "0";
+   }
+
+</script>
+
+</body>
+</html>

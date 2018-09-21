@@ -4,11 +4,33 @@
 	<title>Opioid Webpage</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 </head>
-<body>
+<body onload = "init()">
 
 	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-
+	<table>
+	<tr><td>
 	<a href="/home"><h2 class="center" >Opioid Webpage</h2></a>
+		<div>
+		<p>
+			In the United states, accidental deaths caused by fatal drug overdose is becoming a growing concern due to the rising numbers revealed by recent statistics. The purpose of this project is to find interesting correlations between various relevant factors through data visualizations and determine whether this problem could be tackled through predictive modelling.
+
+		</p>
+	</div>
+	</td><td>
+	<div >
+	<ul style="list-style-type: none;">
+	<li><canvas id =     "canvas"
+        height = "150"
+        width  = "200" >
+    <p>Canvas not supported</p>
+</canvas></li>
+<li  style="padding-left:35px" ><img width="70%" src="../style/logo.png"></li>
+</ul>
+	</div>
+	</td></tr>
+	</table>
+	
+	
 
 	<div id="mySidenav" class="sidenav">
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -20,12 +42,8 @@
       <!-- <a href="#">About Us</a> -->
 	</div>
 
-	<div>
-		<p>
-			In the United states, accidental deaths caused by fatal drug overdose is becoming a growing concern due to the rising numbers revealed by recent statistics. The purpose of this project is to find interesting correlations between various relevant factors through data visualizations and determine whether this problem could be tackled through predictive modelling.
 
-		</p>
-	</div>
+
 
 	<div style="text-align: center;" class="mapdiv">
 		<svg height="900" width="1100">
@@ -175,7 +193,7 @@
 				<a href="" xlink:title="Tennessee">
 					<path id="US-TN" title="Tennessee" class="land" d="M854.51,362.7L881.54,359.56L890.64,357.69L890.63,360.58L891.33,363.75L887.79,365.3L885.58,369.5L882.37,369.54L876.28,374.79L874.51,373.03L870.36,376.75L870.69,378.36L867.46,380.66L865.93,382.9L862.01,385.43L857.83,387.06L854.18,388.16L851.93,391.24L850.98,393.82L847.25,395.75L847.46,400.57L837.59,402.05L823.25,403.55L799.35,405.82L775.95,407.99L755.47,409.14L737.11,410.42L739.1,408.17L738.45,401.59L741.19,398.42L741.65,394.62L744.74,392.2L746.39,388.88L746.45,386.99L747.49,381.37L748.38,378.06L748.7,375.84L774.8,373.97L774.43,370.42L778.04,370.05L778.72,371.03L790.05,369.33L799.86,368.47L810.52,367.52L821.02,366.98L826.21,366.09L842.33,365.07z"/>
 				</a>
-				<a href="" xlink:title="Texas">
+				<a href="" xlink:title="Texas" id="texas">
 					<path id="US-TX" title="Texas" class="land" d="M658.64,445.06L659.67,446.53L663.36,446.16L667.77,446.16L666.94,459.1L668.65,483.45L671.9,485.95L673.07,489.45L674.87,494.7L677.27,499.84L679.1,502.91L677.42,511.32L676.22,513.83L674.63,519.34L676.12,520.83L676.18,525.4L673.27,528.5L671.32,531.91L673.04,534.9L656.02,540.04L637.82,557.24L617.61,567.14L606.35,578.03L601.48,588.34L601.04,604.28L601.91,615.41L605.78,623.36L597.58,623.93L582.8,618.52L566.71,610.86L561.26,599.79L557.33,583.46L545.79,569.82L539.4,556.02L530.11,539.78L516.53,529.83L500.18,529.18L486.19,546.32L470.08,538.07L460.36,530.23L456.6,517.21L451.21,504.67L440.58,493.46L431.39,485.2L425.23,476.34L423.48,472.47L423.5,470.51L440.89,472.47L475.73,475.87L493.71,477.35L497.01,434.63L501.59,375.32L519.86,376.63L538.16,377.73L556.46,378.64L555.49,400.85L554.53,422.51L558.91,425.14L561.9,427.12L566.91,425.79L569.54,430.6L575.82,432.43L581.41,433.82L590.23,433.51L592.59,439.04L598.33,436.88L603.58,440.5L608.74,442.04L611.74,438.79L614.58,442.61L620.93,441.42L623.71,442.55L626.89,441.61L630.14,439.76L634.09,439.72L640.76,439.93L645.06,438.36L650.4,440.72z"/>
 				</a>
 				<a href="" xlink:title="Utah">
@@ -215,6 +233,39 @@
 	    document.getElementById("mySidenav").style.width = "0";
 	}
 
+	function init(){
+	
+draw();
+	setInterval(draw, 500);
+	}
+	function draw(){
+		//requestAnimationFrame(draw);
+		var canvas= document.getElementById("canvas");
+		var c= canvas.getContext('2d');
+		 c.clearRect(0,0,canvas.width,canvas.height);
+		//c.clearRect(0,0,280,200);
+		 c.save();
+		//c.translate(150,130);
+		c.translate(canvas.width/2,canvas.height/2);
+		
+		var circleNumber =20;
+		var radius=50;
+		var size= 7;
+		
+		for(var i=1;i<=circleNumber;i++){
+			c.fillStyle='hsl('+360*Math.random() + ',100%,60%)'; 
+			c.beginPath();
+			c.arc(0,radius,size,0,2*Math.PI,false);
+			c.rotate(2*Math.PI/circleNumber);
+			c.fill();
+		}
+		//c.translate(-150,-130);
+		c.translate(-canvas.width/2,-canvas.height/2);
+		
+	}	
+	
+	
+		
 </script>
 
 </body>

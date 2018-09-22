@@ -4,10 +4,24 @@
 	<title>Opioid Webpage</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
 </head>
+<style>
+		.button {
+			background-color: #52527a;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		</style>
 <body >
 
 	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-	
+	<button class = "button" style="float: right;" onclick="changeTheme()">Switch theme</button>
 	<a href="/home"><h2 class="center" >Opioid Webpage</h2></a>
 	<div>
 		<p>
@@ -257,6 +271,23 @@
 
 
 <script>
+	i = 0;
+
+    function changeTheme() {
+        i ++;
+        var body_tag = document.getElementsByTagName("BODY")[0];
+        var head_tag = document.getElementsByTagName("H2")[0];
+        if (i % 2){
+            body_tag.style.backgroundColor = "black";
+            body_tag.style.color = "white";
+            head_tag.style.color = "white";
+        }
+        else {
+            body_tag.style.backgroundColor = "white";
+            body_tag.style.color = "black";
+            head_tag.style.color = "black";
+        }
+    }
 	
 	function openNav() {
     document.getElementById("mySidenav").style.width = "250px";

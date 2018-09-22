@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Opioid Webpage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body onload = "init()">
+
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+  <!-- <a href="/home"><h2 class="center" >Opioid Webpage</h2></a> -->
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/home">Homepage</a>
+    <a href="/StateVsDeath">State vs Opioid Deaths</a>
+    <a href="/StateVsPop">State vs Population</a>
+    <a href="/heatmap">HeatMap</a>
+    <a href="/feedback">Feedback</a>
+    <a href="/aboutUs">About Us</a>
+    <!-- <a href="#">About Us</a> -->
+  </div>
+  
+  <div class="logo" style="margin-left: 40%" >
+	<ul style="list-style-type: none;">
+	<li><canvas id =  "canvas"
+        height = "150"
+        width  = "200" 
+        >
+    <p>Canvas not supported</p>
+    <li style="padding-left:35px ; " ><img width="150px" height="50px" src="../style/logo.png"></li>
+	</canvas></li>
+	</ul>
+  </div>
+
+
+  <div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;">
+  	
+  	<img src="../style/indira.jpg" width="300px" height="300px" >
+  	<h4>Indira Bobburi</h4>
+
+  </div>
+
+  <div style="margin-left: 30%; margin-top: 40px;margin-right: 50px; display:inline-block;">
+  	
+  	<img src="../style/divya.jpg" width="300px" height="300px"  >
+  	<h4>Divya Bharti</h4>
+
+  </div>
+
+  <div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;">
+  	
+  	<img src="../style/vijay.jpg" width="300px" height="300px"  >
+  	<h4>Vijay Yadav</h4>
+
+  </div>
+
+ 
+
+  <div style="margin-left: 30%; margin-top: 40px;margin-right: 50px; display:inline-block;">
+  	
+  	<img src="../style/amogh.jpg" width="300px" height="300px"  >
+  	<h4>Amogh Ramaswamy</h4>
+
+  </div>
+
+
+
+
+</body>
+
+
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
+
+
+ function init(){
+	
+	draw();
+		setInterval(draw, 500);
+		}
+		function draw(){
+			//requestAnimationFrame(draw);
+			var canvas= document.getElementById("canvas");
+			var c= canvas.getContext('2d');
+			 c.clearRect(0,0,canvas.width,canvas.height);
+			//c.clearRect(0,0,280,200);
+			 c.save();
+			//c.translate(150,130);
+			c.translate(canvas.width/2,canvas.height/2);
+			
+			var circleNumber =20;
+			var radius=50;
+			var size= 7;
+			
+			for(var i=1;i<=circleNumber;i++){
+				c.fillStyle='hsl('+360*Math.random() + ',100%,60%)'; 
+				c.beginPath();
+				c.arc(0,radius,size,0,2*Math.PI,false);
+				c.rotate(2*Math.PI/circleNumber);
+				c.fill();
+			}
+			//c.translate(-150,-130);
+			c.translate(-canvas.width/2,-canvas.height/2);
+		
+	}	
+
+</script>
+
+</html>

@@ -47,3 +47,12 @@ module.exports.heatmap = function(request, result)
     result.sendFile('heatmap.html',{ root: "./app_server/views" });
 };
 
+
+/*
+ * GET about us.
+ */
+module.exports.aboutUs = function(request, result) 
+{
+    result.sendFile('aboutUs.html',{ root: "./app_server/views" });
+};
+

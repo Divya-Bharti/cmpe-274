@@ -56,3 +56,12 @@ module.exports.aboutUs = function(request, result)
     result.sendFile('aboutUs.html',{ root: "./app_server/views" });
 };
 
+
+/*
+ * GET drug names.
+ */
+module.exports.drugName = function(request, result) 
+{
+    result.sendFile('drugName.html',{ root: "./app_server/views" });
+};
+

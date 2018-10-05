@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drug Name and Generic Name</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
+	  <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+	  <link rel="stylesheet" type="text/css" href="/stylesheets/drugName.css">
+	  <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/home">Homepage</a>
+    <a href="/drugname">Drug Name</a>
+    <a href="/StateVsDeath">State vs Opioid Deaths</a>
+    <a href="/StateVsPop">State vs Population</a>
+    <a href="/heatmap">HeatMap</a>
+    <a href="/feedback">Feedback</a>
+    <a href="/aboutUs">About Us</a>
+    <!-- <a href="#">About Us</a> -->
+  </div>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+    <h2>Drug Name List</h2>
+
+	<ul id="selectable">
+		<li> ABSTRAL </li>
+		<li> ACETAMINOPHEN-CODEINE </li>
+		<li> ACTIQ </li>
+		<li> ASCOMP WITH CODEINE </li>
+		<li> ASPIRIN-CAFFEINE-DIHYDROCODEIN </li>
+		<li> AVINZA </li>
+		<li> BELLADONNA-OPIUM </li>
+		<li> BUPRENORPHINE HCL </li>
+		<li> BUTALB-ACETAMINOPH-CAFF-CODEIN </li>
+		<li> BUTALB-CAFF-ACETAMINOPH-CODEIN </li>
+		<li> BUTALBITAL COMPOUND-CODEINE </li>
+		<li> BUTORPHANOL TARTRATE </li>
+		<li> BUTRANS </li>
+		<li> CAPITAL W-CODEINE </li>
+		<li> CARISOPRODOL COMPOUND-CODEINE </li>
+		<li> CARISOPRODOL-ASPIRIN-CODEINE </li>
+		<li> CODEINE SULFATE </li>
+		<li> CO-GESIC </li>
+		<li> CONZIP </li>
+		<li> DEMEROL </li>
+		<li> DEMEROL </li>
+		<li> DILAUDID </li>
+		<li> DILAUDID </li>
+		<li> DILAUDID-HP </li>
+		<li> DISKETS </li>
+		<li> DOLOPHINE HCL </li>
+		<li> DURAGESIC </li>
+		<li> DURAMORPH </li>
+		<li> ENDOCET </li>
+		<li> ENDODAN </li>
+		<li> EXALGO </li>
+		<li> FENTANYL </li>
+		<li> FENTANYL CITRATE </li>
+		<li> FENTORA </li>
+		<li> FIORICET WITH CODEINE </li>
+		<li> FIORINAL WITH CODEINE #3 </li>
+		<li> HYCET </li>
+		<li> HYDROCODONE-ACETAMINOPHEN </li>
+		<li> HYDROCODONE-IBUPROFEN </li>
+		<li> HYDROMORPHONE ER </li>
+		<li> HYDROMORPHONE HCL </li>
+		<li> HYDROMORPHONE HCL </li>
+		<li> IBUDONE </li>
+		<li> INFUMORPH </li>
+		<li> KADIAN </li>
+		<li> LAZANDA </li>
+		<li> LEVORPHANOL TARTRATE </li>
+		<li> LORCET </li>
+		<li> LORCET 10-650 </li>
+		<li> LORCET HD </li>
+		<li> LORCET PLUS </li>
+		<li> LORTAB </li>
+		<li> MAGNACET </li>
+		<li> MEPERIDINE HCL </li>
+		<li> MEPERIDINE HCL </li>
+		<li> MEPERITAB </li>
+		<li> METHADONE HCL </li>
+		<li> METHADONE INTENSOL </li>
+		<li> METHADOSE </li>
+		<li> MORPHINE SULFATE </li>
+		<li> MORPHINE SULFATE </li>
+		<li> MORPHINE SULFATE ER </li>
+		<li> MS CONTIN </li>
+		<li> NALBUPHINE HCL </li>
+		<li> NORCO </li>
+		<li> NUCYNTA </li>
+		<li> NUCYNTA ER </li>
+		<li> OPANA </li>
+		<li> OPANA ER </li>
+		<li> OPIUM TINCTURE </li>
+		<li> OXECTA </li>
+		<li> OXYCODONE HCL </li>
+		<li> OXYCODONE HCL ER </li>
+		<li> OXYCODONE HCL-ASPIRIN </li>
+		<li> OXYCODONE HCL-IBUPROFEN </li>
+		<li> OXYCODONE-ACETAMINOPHEN </li>
+		<li> OXYCONTIN </li>
+		<li> OXYMORPHONE HCL </li>
+		<li> OXYMORPHONE HCL ER </li>
+		<li> PENTAZOCINE-ACETAMINOPHEN </li>
+		<li> PENTAZOCINE-NALOXONE HCL </li>
+		<li> PERCOCET </li>
+		<li> PERCODAN </li>
+		<li> PRIMLEV </li>
+		<li> REPREXAIN </li>
+		<li> ROXICET </li>
+		<li> ROXICODONE </li>
+		<li> RYBIX ODT </li>
+		<li> STAGESIC </li>
+		<li> SUBSYS </li>
+		<li> SYNALGOS-DC </li>
+		<li> TALWIN </li>
+		<li> TRAMADOL HCL </li>
+		<li> TRAMADOL HCL ER </li>
+		<li> TRAMADOL HCL-ACETAMINOPHEN </li>
+		<li> TREZIX </li>
+		<li> TYLENOL-CODEINE NO.3 </li>
+		<li> TYLENOL-CODEINE NO.4 </li>
+		<li> ULTRACET </li>
+		<li> ULTRAM </li>
+		<li> ULTRAM ER </li>
+		<li> VICODIN </li>
+		<li> VICODIN ES </li>
+		<li> VICODIN HP </li>
+		<li> VICOPROFEN </li>
+		<li> XARTEMIS XR </li>
+		<li> XODOL 10-300 </li>
+		<li> XODOL 5-300 </li>
+		<li> XODOL 7.5-300 </li>
+		<li> XYLON 10 </li>
+		<li> ZAMICET </li>
+		<li> ZOHYDRO ER </li>
+		<li> ZOLVIT </li>
+	</ul>
+
+</body>
+
+<script>
+	$(init);
+
+	function init()
+	{
+	    $("#selectable").selectable();
+	}
+
+</script>
+
+<script>
+	  function openNav() {
+	    document.getElementById("mySidenav").style.width = "250px";
+	  }
+
+	  function closeNav() {
+	      document.getElementById("mySidenav").style.width = "0";
+	  }
+</script>
+</html>

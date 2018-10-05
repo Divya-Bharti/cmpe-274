@@ -65,6 +65,7 @@ module.exports.drugName = function(request, result)
     result.sendFile('drugName.html',{ root: "./app_server/views" });
 };
 
+<<<<<<< HEAD
 /*
  * GET drag and drop page
  */
@@ -88,4 +89,29 @@ module.exports.amogh = function(request, result)
 /*
  * GET amogh details.
  */
+module.exports.divya = function(request, result) 
+{
+    result.sendFile('divya.html',{ root: "./app_server/views" });
+};
+
+
+
+/*
+ * GET amogh details.
+ */
+module.exports.indira = function(request, result) 
+{
+    result.sendFile('indira.html',{ root: "./app_server/views" });
+};
+
+
+
+/*
+ * GET amogh details.
+ */
+module.exports.vijay = function(request, result) 
+{
+    result.sendFile('vijay.html',{ root: "./app_server/views" });
+};
+>>>>>>> 8eef368dbbdc6b5a01250e3f4c44912596ce8c20
 

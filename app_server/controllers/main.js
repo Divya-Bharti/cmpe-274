@@ -65,3 +65,43 @@ module.exports.drugName = function(request, result)
     result.sendFile('drugName.html',{ root: "./app_server/views" });
 };
 
+
+
+/*
+ * GET amogh details.
+ */
+module.exports.amogh = function(request, result) 
+{
+    result.sendFile('amogh.html',{ root: "./app_server/views" });
+};
+
+
+
+/*
+ * GET amogh details.
+ */
+module.exports.divya = function(request, result) 
+{
+    result.sendFile('divya.html',{ root: "./app_server/views" });
+};
+
+
+
+/*
+ * GET amogh details.
+ */
+module.exports.indira = function(request, result) 
+{
+    result.sendFile('indira.html',{ root: "./app_server/views" });
+};
+
+
+
+/*
+ * GET amogh details.
+ */
+module.exports.vijay = function(request, result) 
+{
+    result.sendFile('vijay.html',{ root: "./app_server/views" });
+};
+

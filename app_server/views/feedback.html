@@ -10,6 +10,10 @@
   <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/jquery-ui-cupertino/jquery-ui.min.css" />
+  <script type="text/javascript" src="/jquery-ui-cupertino/external/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/jquery-ui-cupertino/jquery-ui.min.js"></script>
 </head>
 <body>
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -29,8 +33,7 @@
     <!-- <a href="#">About Us</a> -->
   </div>
   
-  <h2>Feedback Form</h2>
-
+  <h1 class="ui-state-default">Feedback Form</h1>
   <div class="box">
 
     <form action="feedback" >
@@ -68,6 +71,9 @@
 </body>
 
 <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
   function validate()
   {
     fname  = document.getElementById("fname").value;

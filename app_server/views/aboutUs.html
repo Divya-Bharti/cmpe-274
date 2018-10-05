@@ -8,11 +8,16 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/aboutUs.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.1.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-lightness/jquery-ui.min.css" />
+  <script type="text/javascript" src="/js/jquery.js"></script>
+  <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/js/tabs.js"></script>
+
 </head>
-<body onload = "init()">
+<body  onload = "init()">
 
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 
@@ -42,39 +47,15 @@
 	</ul>
   </div>
 
-
-  <div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;">
-  	
-  	<img src="../style/indira.jpg" class="aboutUs" >
-  	<h4>Indira Bobburi</h4>
-
-  </div>
-
-  <div style="margin-left: 30%; margin-top: 40px;margin-right: 50px; display:inline-block;">
-  	
-  	<img src="../style/divya.jpg" class="aboutUs"  >
-  	<h4>Divya Bharti</h4>
-
-  </div>
-
-  <div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;">
-  	
-  	<img src="../style/vijay.jpg" class="aboutUs"  >
-  	<h4>Vijay Yadav</h4>
-
-  </div>
-
- 
-
-  <div style="margin-left: 30%; margin-top: 40px;margin-right: 50px; display:inline-block;">
-  	
-  	<img src="../style/amogh.jpg" class="aboutUs"  >
-  	<h4>Amogh Ramaswamy</h4>
-
-  </div>
-
-
-
+  <h1 class="ui-state-default">Team Members</h1>
+    <div id="tabs">
+        <ul>
+            <li><a href="/views/amogh.html">Amogh</a></li>
+            <li><a href="/views/divya.html">Divya</a></li>
+            <li><a href="/views/indira.html">Indira</a></li>
+            <li><a href="/views/vijay.html">Vijay</a></li>
+        </ul>
+    </div>
 
 </body>
 
@@ -89,36 +70,39 @@
   }
 
 
- function init(){
-	
-	draw();
-		setInterval(draw, 500);
-		}
-		function draw(){
-			//requestAnimationFrame(draw);
-			var canvas= document.getElementById("canvas");
-			var c= canvas.getContext('2d');
-			 c.clearRect(0,0,canvas.width,canvas.height);
-			//c.clearRect(0,0,280,200);
-			 c.save();
-			//c.translate(150,130);
-			c.translate(canvas.width/2,canvas.height/2);
-			
-			var circleNumber =20;
-			var radius=50;
-			var size= 7;
-			
-			for(var i=1;i<=circleNumber;i++){
-				c.fillStyle='hsl('+360*Math.random() + ',100%,60%)'; 
-				c.beginPath();
-				c.arc(0,radius,size,0,2*Math.PI,false);
-				c.rotate(2*Math.PI/circleNumber);
-				c.fill();
-			}
-			//c.translate(-150,-130);
-			c.translate(-canvas.width/2,-canvas.height/2);
+  function init(){
+  	
+  	draw();
+  	setInterval(draw, 500);
+
+    $("#tabs").tabs();
+  }
+  
+	function draw(){
+		//requestAnimationFrame(draw);
+		var canvas= document.getElementById("canvas");
+		var c= canvas.getContext('2d');
+		 c.clearRect(0,0,canvas.width,canvas.height);
+		//c.clearRect(0,0,280,200);
+		 c.save();
+		//c.translate(150,130);
+		c.translate(canvas.width/2,canvas.height/2);
 		
-	}	
+		var circleNumber =20;
+		var radius=50;
+		var size= 7;
+		
+		for(var i=1;i<=circleNumber;i++){
+			c.fillStyle='hsl('+360*Math.random() + ',100%,60%)'; 
+			c.beginPath();
+			c.arc(0,radius,size,0,2*Math.PI,false);
+			c.rotate(2*Math.PI/circleNumber);
+			c.fill();
+		}
+		//c.translate(-150,-130);
+		c.translate(-canvas.width/2,-canvas.height/2);
+	
+}	
 
 </script>
 

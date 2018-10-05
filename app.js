@@ -10,6 +10,7 @@ var StateVsPop = require('./app_server/routes/StateVsPop.js')
 var heatmap = require('./app_server/routes/heatmap.js')
 var aboutUs = require('./app_server/routes/aboutUs.js')
 var drugName = require('./app_server/routes/drugName.js')
+var dragDrop = require('./app_server/routes/dragDrop.js')
 
 app.use('/', index);
 app.use('/home', index);
@@ -19,6 +20,7 @@ app.use('/StateVsPop', StateVsPop);
 app.use('/heatmap', heatmap);
 app.use('/aboutUs', aboutUs);
 app.use('/drugName', drugName);
+app.use('/dragDrop', dragDrop)
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/app_server"));

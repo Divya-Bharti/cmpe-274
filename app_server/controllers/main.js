@@ -65,3 +65,11 @@ module.exports.drugName = function(request, result)
     result.sendFile('drugName.html',{ root: "./app_server/views" });
 };
 
+/*
+ * GET drag and drop page
+ */
+module.exports.dragDrop = function(request, result)
+{
+    result.sendFile('dragDrop.html', { root: "./app_server/views"});
+}
+

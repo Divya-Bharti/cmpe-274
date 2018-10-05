@@ -65,7 +65,7 @@ module.exports.drugName = function(request, result)
     result.sendFile('drugName.html',{ root: "./app_server/views" });
 };
 
-<<<<<<< HEAD
+
 /*
  * GET drag and drop page
  */
@@ -73,7 +73,7 @@ module.exports.dragDrop = function(request, result)
 {
     result.sendFile('dragDrop.html', { root: "./app_server/views"});
 }
-=======
+
 
 
 /*
@@ -113,5 +113,5 @@ module.exports.vijay = function(request, result)
 {
     result.sendFile('vijay.html',{ root: "./app_server/views" });
 };
->>>>>>> 8eef368dbbdc6b5a01250e3f4c44912596ce8c20
+
 

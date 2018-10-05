@@ -66,6 +66,15 @@ module.exports.drugName = function(request, result)
 };
 
 
+/*
+ * GET drag and drop page
+ */
+module.exports.dragDrop = function(request, result)
+{
+    result.sendFile('dragDrop.html', { root: "./app_server/views"});
+}
+
+
 
 /*
  * GET amogh details.
@@ -104,4 +113,5 @@ module.exports.vijay = function(request, result)
 {
     result.sendFile('vijay.html',{ root: "./app_server/views" });
 };
+
 

@@ -22,6 +22,9 @@ app.use('/aboutUs', aboutUs);
 app.use('/drugName', drugName);
 app.use('/dragDrop', dragDrop)
 
+
+
+
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/app_server"));
 app.listen(3000);

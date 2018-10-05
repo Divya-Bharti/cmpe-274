@@ -72,4 +72,20 @@ module.exports.dragDrop = function(request, result)
 {
     result.sendFile('dragDrop.html', { root: "./app_server/views"});
 }
+=======
+
+
+/*
+ * GET amogh details.
+ */
+module.exports.amogh = function(request, result) 
+{
+    result.sendFile('amogh.html',{ root: "./app_server/views" });
+};
+
+
+
+/*
+ * GET amogh details.
+ */
 

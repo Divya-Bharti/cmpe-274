@@ -5,12 +5,19 @@
 </head>
 <body>
 
-	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;">
+	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;" id="draggableHelperD">
     
-	    <img src="../style/divya.jpg" class="aboutUs"  >
+	    <img src="../style/divya.jpg" class="aboutUs" id="imageD" >
 	    <h4>Divya Bharti</h4>
 
 	</div>
 
 </body>
+
+<script>
+	
+	$('#draggableHelperD').draggable();
+	$('#imageD').resizable();
+	
+</script>
 </html>

@@ -5,12 +5,25 @@
 </head>
 <body>
 
-	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;">
+	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;" id="draggableHelperV">
     
-	    <img src="../style/vijay.jpg" class="aboutUs"  >
+	    <img src="../style/vijay.jpg" class="aboutUs" id="imageV" >
 	    <h4>Vijay Yadav</h4>
 
 	</div>
 
+	<div id="droppable" class="ui-widget-header" style="margin-left: 60%; width: 350px;">
+	  <p>Drop here</p>
+	</div>
+
+
 </body>
+
+<script>
+	
+	$('#draggableHelperV').draggable();
+	$('#imageV').resizable();
+
+</script>
+
 </html>

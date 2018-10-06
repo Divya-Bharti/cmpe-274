@@ -5,12 +5,18 @@
 </head>
 <body>
 
-	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;">
+	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;" id="draggableHelperA">
     
-	    <img src="../style/amogh.jpg" class="aboutUs"  >
+	    <img src="../style/amogh.jpg" class="aboutUs" id="imageA" >
 	    <h4>Amogh Ramaswamy</h4>
 
 	</div>
 
 </body>
+<script>
+	
+	$('#draggableHelperA').draggable();
+	$('#imageA').resizable();
+	
+</script>
 </html>

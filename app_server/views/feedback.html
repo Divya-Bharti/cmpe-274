@@ -11,9 +11,9 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="/jquery-ui-cupertino/jquery-ui.min.css" />
-  <script type="text/javascript" src="/jquery-ui-cupertino/external/jquery/jquery.js"></script>
-  <script type="text/javascript" src="/jquery-ui-cupertino/jquery-ui.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/jquery-ui-theme/jquery-ui.min.css" />
+  <script type="text/javascript" src="/jquery-ui-theme/external/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
 </head>
 <body>
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
@@ -60,9 +60,8 @@
         <option value="New York">New York</option>
         <option value="Other">Other</option>
       </select>
-      
-      <input type="submit" value="Submit" id="myBtn" onclick=" return validate()">
 
+      <input class="ui-button ui-widget ui-corner-all submit" type="submit" value="Submit">
     </form>
     
   </div>
@@ -74,43 +73,47 @@
   $( function() {
     $( "#dialog" ).dialog();
   } );
-  function validate()
-  {
-    fname  = document.getElementById("fname").value;
-    lname  = document.getElementById("lname").value;
-    phone = document.getElementById("phone").value;
-    email = document.getElementById("email").value;
-    
-    errors = "";
-    
-    if (fname == "") {
-        errors += "Missing name.\n";
-    }
 
-    if (lname == "") {
-        errors += "Missing name.\n";
-    } 
-    
-    phoneRE = /^\(\d{3}\) *\d{3}-\d{4}$/;
-    if (!phone.match(phoneRE)){
-        errors += "Invalid phone number. " +
-                  "Example: (999) 999-9999\n";
-    } 
-    
-    emailRE = /^.+@.+\..{2,4}$/;
-    if (!email.match(emailRE)){
-        errors += "Invalid email address. " +
-                  "Should be xxxxx@xxxxx.xxx\n";
-    } 
-    
-    if (errors != "") {
-      alert(errors);
-      return false;
-    }else {
+  $( function() {
+    $( ".widget input[type=submit], .widget a, .widget button" ).button();
+    $( ".submit" ).click( function( event ) {
+      event.preventDefault();
+      fname  = document.getElementById("fname").value;
+      lname  = document.getElementById("lname").value;
+      phone = document.getElementById("phone").value;
+      email = document.getElementById("email").value;
+      
+      errors = "";
+      
+      if (fname == "") {
+          errors += "Missing name.\n";
+      }
 
-      window.alert("Thank you "+fname+" " +lname+" for your valuable feedback. We will contact you at "+email+".");
-    }
-  }
+      if (lname == "") {
+          errors += "Missing name.\n";
+      } 
+      
+      phoneRE = /^\(\d{3}\) *\d{3}-\d{4}$/;
+      if (!phone.match(phoneRE)){
+          errors += "Invalid phone number. " +
+                    "Example: (999) 999-9999\n";
+      } 
+      
+      emailRE = /^.+@.+\..{2,4}$/;
+      if (!email.match(emailRE)){
+          errors += "Invalid email address. " +
+                    "Should be xxxxx@xxxxx.xxx\n";
+      } 
+      
+      if (errors != "") {
+        alert(errors);
+        return false;
+      }else {
+
+        window.alert("Thank you "+fname+" " +lname+" for your valuable feedback. We will contact you at "+email+".");
+      }
+      } );
+  } );
 
 </script>
 

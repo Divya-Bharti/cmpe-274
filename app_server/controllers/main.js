@@ -81,7 +81,7 @@ module.exports.dragDrop = function(request, result)
  */
 module.exports.amogh = function(request, result) 
 {
-    result.sendFile('amogh.html',{ root: "./app_server/views" });
+    result.sendFile('amogh.html',{ root: "./app_server/views/members" });
 };
 
 
@@ -91,7 +91,7 @@ module.exports.amogh = function(request, result)
  */
 module.exports.divya = function(request, result) 
 {
-    result.sendFile('divya.html',{ root: "./app_server/views" });
+    result.sendFile('divya.html',{ root: "./app_server/views/members" });
 };
 
 
@@ -101,7 +101,7 @@ module.exports.divya = function(request, result)
  */
 module.exports.indira = function(request, result) 
 {
-    result.sendFile('indira.html',{ root: "./app_server/views" });
+    result.sendFile('indira.html',{ root: "./app_server/views/members" });
 };
 
 
@@ -111,7 +111,7 @@ module.exports.indira = function(request, result)
  */
 module.exports.vijay = function(request, result) 
 {
-    result.sendFile('vijay.html',{ root: "./app_server/views" });
+    result.sendFile('vijay.html',{ root: "./app_server/views/members" });
 };
 
 

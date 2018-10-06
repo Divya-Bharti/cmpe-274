@@ -8,12 +8,12 @@
 	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;" id="draggableHelperV">
     
 	    <img src="../style/vijay.jpg" class="aboutUs" id="imageV" >
-	    <h4>Vijay Yadav</h4>
+	    <!-- <h4>Vijay Yadav</h4> -->
 
 	</div>
 
-	<div id="droppable" class="ui-widget-header" style="margin-left: 60%; width: 350px;">
-	  <p>Drop here</p>
+	<div id="droppableV" class="ui-widget-header">
+	  <p>Drop the image to see the name</p>
 	</div>
 
 
@@ -23,6 +23,14 @@
 	
 	$('#draggableHelperV').draggable();
 	$('#imageV').resizable();
+	$( "#droppableV" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Vijay Yadav" );
+      }
+    });
 
 </script>
 

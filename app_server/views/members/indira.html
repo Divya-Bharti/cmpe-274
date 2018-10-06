@@ -8,9 +8,13 @@
     <div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;" id="draggableHelperI">
     
         <img src="../style/indira.jpg" class="aboutUs" id="imageI">
-        <h4>Indira Bobburi</h4>
+        <!-- <h4>Indira Bobburi</h4> -->
 
     </div>
+
+    <div id="droppableI" class="ui-widget-header">
+	  <p>Resize the image to the box and drop to see the name</p>
+	</div>
 
 </body>
 
@@ -18,6 +22,14 @@
 	
 	$('#draggableHelperI').draggable();
 	$('#imageI').resizable();
+	$( "#droppableI" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Indira Bobburi" );
+      }
+    });
 	
 </script>
 </html>

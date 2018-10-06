@@ -16,12 +16,12 @@
 <body>
 
 	<div style="margin-left: 10%; margin-top: 40px;margin-right: 50px; display:inline-block;" id="draggableHelperA">
-    
-	    <img src="../style/amogh.jpg" class="aboutUs" id="imageA" >
+    	<img src="../style/amogh.jpg" class="aboutUs" id="imageA" >
 	</div>
 
 	<div id="droppableA" class="ui-widget-header" >
-	  <p>Fit the image in the box and drop to see the name</p>
+	  <p class="name">Resize and drag to know more</p>
+	  <p class="intro"> </p>
 	</div>
 
 </body>
@@ -34,8 +34,10 @@
       drop: function( event, ui ) {
         $( this )
           .addClass( "ui-state-highlight" )
-          .find( "p" )
+          .find( ".name" )
             .html( "Amogh Ramaswamy" );
+       	$( this ).find( ".intro" )  
+       		.html( "Former software engineering intern at Cisco" ); 
       }
     });
 	

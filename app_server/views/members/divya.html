@@ -21,7 +21,8 @@
 	</div>
 
 	<div id="droppableD" class="ui-widget-header">
-	  <p>Fit the image in the box and drop to see the name</p>
+	  <p class="name">Resize and drag to know more</p>
+	  <p class="intro"> </p>
 	</div>
 
 </body>
@@ -34,8 +35,10 @@
       drop: function( event, ui ) {
         $( this )
           .addClass( "ui-state-highlight" )
-          .find( "p" )
+          .find( ".name" )
             .html( "Divya Bharti" );
+       	$( this ).find( ".intro" )  
+       		.html( "Former software engineering intern at Synopsys" ); 
       }
     });
 	

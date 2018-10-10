@@ -4,36 +4,8 @@ var path = require("path");
 app.set('views', __dirname + '/app_server/views');
 
 var index = require('./app_server/routes/index.js')
-var feedback = require('./app_server/routes/feedback.js')
-var StateVsDeath = require('./app_server/routes/StateVsDeath.js')
-var StateVsPop = require('./app_server/routes/StateVsPop.js')
-var heatmap = require('./app_server/routes/heatmap.js')
-var aboutUs = require('./app_server/routes/aboutUs.js')
-var drugName = require('./app_server/routes/drugName.js')
-var dragDrop = require('./app_server/routes/dragDrop.js')
-
-var amogh = require('./app_server/routes/amogh.js')
-var divya = require('./app_server/routes/divya.js')
-var indira = require('./app_server/routes/indira.js')
-var vijay = require('./app_server/routes/vijay.js')
-
 
 app.use('/', index);
-app.use('/home', index);
-app.use('/feedback', feedback);
-app.use('/StateVsDeath', StateVsDeath);
-app.use('/StateVsPop', StateVsPop);
-app.use('/heatmap', heatmap);
-app.use('/aboutUs', aboutUs);
-app.use('/drugName', drugName);
-app.use('/dragDrop', dragDrop)
-
-app.use('/aboutUs/amogh', amogh);
-app.use('/aboutUs/divya', divya);
-app.use('/aboutUs/indira', indira);
-app.use('/aboutUs/vijay', vijay);
-
-
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/app_server"));

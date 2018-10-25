@@ -3,46 +3,46 @@
 <head>
 	<title>Opioid Webpage</title>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+	<link rel="stylesheet" type="text/css" href="/jquery-ui-theme/jquery-ui.min.css" />
+	<script type="text/javascript" src="/jquery-ui-theme/external/jquery/jquery.js"></script>
+  	<script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="/js/accordion.js"></script>
 </head>
-<body onload = "init()">
+<style>
+		.button {
+			background-color: #52527a;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+		</style>
+<body >
 
 	<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-	<table>
-	<tr><td>
-	<a href="/home"><h2 class="center" >Opioid Webpage</h2></a>
-		<div>
+	<a href="/home"><h2 "ui-state-default" >Opioid Webpage</h2></a>
+	<div>
 		<p>
 			In the United states, accidental deaths caused by fatal drug overdose is becoming a growing concern due to the rising numbers revealed by recent statistics. The purpose of this project is to find interesting correlations between various relevant factors through data visualizations and determine whether this problem could be tackled through predictive modelling.
-
 		</p>
 	</div>
-	</td><td>
-	<div >
-	<ul style="list-style-type: none;">
-	<li><canvas id =     "canvas"
-        height = "150"
-        width  = "200" >
-    <p>Canvas not supported</p>
-</canvas></li>
-<li  style="padding-left:35px" ><img width="70%" src="../style/logo.png"></li>
-</ul>
-	</div>
-	</td></tr>
-	</table>
-	
-	
 
-	<div id="mySidenav" class="sidenav">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <a href="/home">Homepage</a>
-	  <a href="/StateVsDeath">State vs Opioid Deaths</a>
-      <a href="/StateVsPop">State vs Population</a>
-      <a href="/heatmap">HeatMap</a>
-      <a href="/feedback">Feedback</a>
-      <!-- <a href="#">About Us</a> -->
-	</div>
-
-
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/home">Homepage</a>
+    <!-- <a href="/drugname">Drug Name</a> -->
+    <a href="/StateVsDeath">State vs Opioid Deaths</a>
+    <a href="/StateVsPop">State vs Population</a>
+    <a href="/heatmap">HeatMap</a>
+	<a href="/feedback">Feedback</a>
+    <a href="/aboutUs">About Us</a>
+    <!-- <a href="#">About Us</a> -->
+  </div>
 
 
 	<div style="text-align: center;" class="mapdiv">
@@ -222,8 +222,71 @@
 	</div>
 
 
+<div id="accordion">
+  <h3>U.S. Opiate Prescriptions</h3>
+  <div>
+    <p>
+  	Accidental death by fatal drug overdose is a rising trend in the United States. What can you do to help?
+
+	This dataset contains summaries of prescription records for 250 common opioid and non-opioid drugs written by 25,000 unique licensed medical professionals in 2014 in the United States for citizens covered under Class D Medicare as well as some metadata about the doctors themselves. This is a small subset of data that was sourced from cms.gov. The full dataset contains almost 24 million prescription instances in long format. I have cleaned and compiled this data here in a format with 1 row per prescriber and limited the approximately 1 million total unique prescribers down to 25,000 to keep it manageable. If you are interested in more data, you can get the script I used to assemble the dataset here and run it yourself. The main data is in prescriber-info.csv. There is also opioids.csv that contains the names of all opioid drugs included in the data and overdoses.csv that contains information on opioid related drug overdose fatalities.
+  	</p>
+  </div>
+  <h3>Data characteristics</h3>
+  <div >
+	<ul>
+		NPI – unique National Provider Identifier number
+	</ul>
+	<ul>
+		Gender - (M/F)
+	</ul>
+	<ul>
+		State - U.S. State by abbreviation
+	</ul>
+	<ul>
+		Credentials - set of initials indicative of medical degree
+	</ul>
+	<ul>
+		Specialty - description of type of medicinal practice
+	</ul>
+	<ul>
+		A long list of drugs with numeric values indicating the total number of prescriptions written for the year by that individual
+	</ul>
+	<ul>
+		Opioid.Prescriber - a boolean label indicating whether or not that individual prescribed opiate drugs more than 10 times in the year
+	</ul>
+
+  </div>
+</div>
+
+
+
+<div class="emptyspace">
+	
+</div>
+
+<p>Reference : https://www.kaggle.com/apryor6/us-opiate-prescriptions/home</p>	
+
+</body>
+
 
 <script>
+	i = 0;
+
+    function changeTheme() {
+        i ++;
+        var body_tag = document.getElementsByTagName("BODY")[0];
+        var head_tag = document.getElementsByTagName("H2")[0];
+        if (i % 2){
+            body_tag.style.backgroundColor = "black";
+            body_tag.style.color = "white";
+            head_tag.style.color = "white";
+        }
+        else {
+            body_tag.style.backgroundColor = "white";
+            body_tag.style.color = "black";
+            head_tag.style.color = "black";
+        }
+    }
 	
 	function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -263,10 +326,22 @@ draw();
 		c.translate(-canvas.width/2,-canvas.height/2);
 		
 	}	
-	
+
+	var coll = document.getElementsByClassName("foldable");
+	var i;
+
+	for (i = 0; i < coll.length; i++) {
+	  coll[i].addEventListener("click", function() {
+	    this.classList.toggle("active");
+	    var content = this.nextElementSibling;
+	    if (content.style.maxHeight){
+	      content.style.maxHeight = null;
+	    } else {
+	      content.style.maxHeight = content.scrollHeight + "px";
+	    } 
+	  });
+	}
 	
 		
 </script>
-
-</body>
 </html>

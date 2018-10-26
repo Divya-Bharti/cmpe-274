@@ -76,7 +76,15 @@ router.get('/aboutUs/indira', ctrlMain.indira);
 router.get('/aboutUs/vijay', ctrlMain.vijay);
 
 
+/*
+ * GET Overdose page.
+ */
+router.get('/overdose', ctrlMain.overdoseGet);
 
+/*
+ * POST Overdose page.
+ */
+router.post('/overdose', ctrlMain.overdosePost);
 
 
 

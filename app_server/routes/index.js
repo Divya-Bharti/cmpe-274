@@ -1,6 +1,10 @@
+var bodyParser = require('body-parser');
 var express = require('express');
 var router = express.Router();
 var ctrlMain = require("../controllers/main");
+
+router.use("/", bodyParser.json());
+router.use("/", bodyParser.urlencoded());
 
 /*
  * GET home page.
@@ -96,12 +100,7 @@ router.delete('/:id/delete', ctrlMain.overdoseDelete);
 /*
  * PUT Overdose page.
  */
-//router.put('/:id/update', ctrlMain.overdoseUpdate);
-router.put('/:id/update', function (req, res) 
-{
-    console.log(req.body);
-    res.send("sucess");
-});
+router.put('/:id/update', ctrlMain.overdoseUpdate);
 
 
 

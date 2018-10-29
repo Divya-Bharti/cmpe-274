@@ -46,27 +46,6 @@
     <h1>Add Form</h1>
 
     <label for="state"><b>State</b></label>
-    <input type="text" placeholder="Enter State Name" name="state" required>
-
-    <label for="pop"><b>Population</b></label>
-    <input type="text" placeholder="Enter Population of state" name="pop" required>
-    
-    <label for="death"><b>Deaths</b></label>
-    <input type="text" placeholder="Enter no. of deaths caused by opm overdose" name="death" required>
-    
-    <label for="abbr"><b>State Abbreviation</b></label>
-    <input type="text" placeholder="Enter Abbreviation for state" name="abbr" required>
-
-    <button type="submit" class="btn">Add Record</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
-</div>
-
-<div class="form-popup" id="myUpdateForm">
-  <form action="overdose" class="form-container">
-    <h1>Update Form</h1>
-
-    <label for="state"><b>State</b></label>
     <input type="text" id = "state" placeholder="Enter State Name" name="state" required>
 
     <label for="pop"><b>Population</b></label>
@@ -78,7 +57,28 @@
     <label for="abbr"><b>State Abbreviation</b></label>
     <input type="text" id = "abbreviation" placeholder="Enter Abbreviation for state" name="abbr" required>
 
-    <button type="submit" id = "submit" class="btn">Update Record</button>
+    <button type="submit" id = "submitAdd" class="btn">Add Record</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<div class="form-popup" id="myUpdateForm">
+  <form action="overdose" class="form-container">
+    <h1>Update Form</h1>
+
+    <label for="state"><b>State</b></label>
+    <input type="text" id = "Ustate" placeholder="Enter State Name" name="state" required>
+
+    <label for="pop"><b>Population</b></label>
+    <input type="text" id = "Upopulation" placeholder="Enter Population of state" name="pop" required>
+    
+    <label for="death"><b>Deaths</b></label>
+    <input type="text" id = "Udeath" placeholder="Enter no. of deaths caused by opm overdose" name="death" required>
+    
+    <label for="abbr"><b>State Abbreviation</b></label>
+    <input type="text" id = "Uabbreviation" placeholder="Enter Abbreviation for state" name="abbr" required>
+
+    <button type="submit" id = "submitUpdate" class="btn">Update Record</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
@@ -128,7 +128,7 @@
     }
   
     $.ajax(settings).done(function (response) {
-      alert(response);
+      alert("DATA DELETED!");
       document.location.reload();
     });
   }
@@ -136,12 +136,12 @@
   function updateID(clickedID) {
       openUpdateForm();
 
-      $( "#submit" ).click( function( event ) {
+      $( "#submitUpdate" ).click( function( event ) {
       event.preventDefault();
-      state_name = document.getElementById("state").value;
-      population = document.getElementById("population").value;
-      death = document.getElementById("death").value;
-      abbr = document.getElementById("abbreviation").value;
+      state_name = document.getElementById("Ustate").value;
+      population = document.getElementById("Upopulation").value;
+      death = document.getElementById("Udeath").value;
+      abbr = document.getElementById("Uabbreviation").value; 
 
       data_val = {
         "State":state_name,
@@ -149,6 +149,8 @@
         "Deaths":death,
         "Abbrev":abbr
       }
+
+      data_string_update = JSON.stringify(data_val);
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -159,10 +161,10 @@
         "Cache-Control": "no-cache"
         },
         "processData": false,
-        "data": JSON.stringify(data_val)
+        "data": data_string_update
       }
-
       $.ajax(settings).done(function (response) {
+        alert("DATA UPDATED!")
         closeForm();
         document.location.reload();
 
@@ -175,6 +177,45 @@
 <script>
   function openAddForm() {
       document.getElementById("myAddForm").style.display = "block";
+
+      $( "#submitAdd" ).click( function( event ) {
+      event.preventDefault();
+      state_name = document.getElementById("state").value;
+      population = document.getElementById("population").value;
+      death = document.getElementById("death").value;
+      abbr = document.getElementById("abbreviation").value;
+
+      data_val = {
+        "State":state_name,
+        "Population":population,
+        "Deaths":death,
+        "Abbrev":abbr
+      }
+
+      data_string = JSON.stringify(data_val);
+
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:3000/overdose",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache"
+        },
+        "processData": false,
+        "data": data_string
+    }
+
+$.ajax(settings).done(function (response) {
+  alert("DATA ADDED!");
+  closeForm();
+  document.location.reload();
+
+});
+
+      } );     
+
   }
 
   function openUpdateForm() {

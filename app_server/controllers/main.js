@@ -183,14 +183,9 @@ module.exports.overdoseDelete = function(req, res)
 module.exports.aboutUs = function(request, result) 
 {
     Overdose.find({}, function(err, results){
-        //var x= results;
-        // console.log("hitting overdoseGet"+results);
+
         result.render('aboutUs', {data : "about Us test data"  });
-        // result.render('Overdoses', {data : "kkk"});
-        
         });
-        //result.sendFile('Overdoses.html',{ root: "./app_server/views" });
-        // result.render('Overdoses');
          
 };
 

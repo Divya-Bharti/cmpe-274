@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/aboutUs.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/overdoseTable.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/overdoseFormPopup.css">
     <script type="text/javascript" src="/jquery-ui-theme/external/jquery/jquery.js"></script>
       	<script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
     <link href="https://unpkg.com/tabulator-tables@4.0.5/dist/css/tabulator.min.css" rel="stylesheet">
@@ -26,32 +28,28 @@
         <a href="/overdose">Overdoses</a>
     </div>
 
-<!-- <h1> <%= data.length %> </h1> -->
-<style>
-#DrugOverdoseTable {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+<button style="float:right" onclick="openForm()">Open Form</button>
 
-#DrugOverdoseTable td, #DrugOverdoseTable th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Add/ Update</h1>
 
-#DrugOverdoseTable tr:nth-child(even){background-color: #f2f2f2;}
+    <label for="state"><b>State</b></label>
+    <input type="text" placeholder="Enter State Name" name="state" required>
 
-#DrugOverdoseTable tr:hover {background-color: #ddd;}
+    <label for="pop"><b>Population</b></label>
+    <input type="text" placeholder="Enter Population of state" name="pop" required>
+    
+    <label for="death"><b>Deaths</b></label>
+    <input type="text" placeholder="Enter no. of deaths caused by opm overdose" name="death" required>
+    
+    <label for="abbr"><b>State Abbreviation</b></label>
+    <input type="text" placeholder="Enter Abbreviation for state" name="abbr" required>
 
-#DrugOverdoseTable th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-}
-</style>
-<button style="float:right">  Add/Update </button>
+    <button type="submit" class="btn">Update/Add Record</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
 
 <table id="DrugOverdoseTable">
         <thead>
@@ -102,22 +100,16 @@
   }
 </script>
 
-<!-- <script>
-$( document ).ready(function() {
-    console.log( "ready!" );
-    var table = new Tabulator("#table", {
-        layout:"fitDataFill",
-        height:"311px",
-        columns:[
-        {title:"State", field:"name"},
-        {title:"Population", field:"progress", align:"right", sorter:"number"},
-        {title:"Deaths", field:"gender"},
-        {title:"Abbrev", field:"rating", align:"center"},
-        
-        ],
-    });
-});
-</script> -->
+<script>
+  function openForm() {
+      document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+  }
+  </script>
+
 <div id="table"></div>
 </body>
 <script type="text/javascript" src="/routes/nav.js"></script>

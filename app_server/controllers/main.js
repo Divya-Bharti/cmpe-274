@@ -141,24 +141,24 @@ module.exports.overdoseGet = function(request, result)
 /*
  * POST overdose.
  */
- 
-//module.exports.overdosePost = function(request, result) 
-//{
-    // let val = new Scheme({
-    //       State: String,
-    //       Population:Number,
-    //       Deaths:Number,
-    //       Abbrev:String
-    // });
-    // val.State = request.
+ module.exports.overdosePost = function(req, res) 
+{
+    let product = new Overdose(
+        {
+            State: req.body.State,
+            Population: req.body.Population,
+            Deaths: req.body.Deaths,
+            Abbrev: req.body.Abbrev
+        }
+    );
 
-    // product.save(function (err) {
-    //     if (err) {
-    //         return next(err);
-    //     }
-    //     res.send('Product Created successfully')
-    // })
-//};
+    product.save(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.send('Entry Inserted successfully')
+    })
+};
 
 module.exports.overdoseUpdate = function (req, res) 
 {

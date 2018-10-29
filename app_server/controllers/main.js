@@ -3,7 +3,7 @@
  */
 module.exports.home = function(request, result) 
 {
-    result.sendFile('index.html',{ root: "./app_server/views" });
+    result.render('index');
 };
 
 /*
@@ -11,7 +11,7 @@ module.exports.home = function(request, result)
  */
 module.exports.get_feedback = function(request, result) 
 {
-    result.sendFile('feedback.html',{ root: "./app_server/views" });
+    result.render('feedback');
 };
 
 /*
@@ -28,7 +28,7 @@ module.exports.get_feedback = function(request, result)
  */
 module.exports.StateVsDeath = function(request, result) 
 {
-    result.sendFile('StateVsDeath.html',{ root: "./app_server/views" });
+    result.render('StateVsDeath');
 };
 
 /*
@@ -36,7 +36,7 @@ module.exports.StateVsDeath = function(request, result)
  */
 module.exports.StateVsPop = function(request, result) 
 {
-    result.sendFile('StateVsPop.html',{ root: "./app_server/views" });
+    result.render('StateVsPop');
 };
 
 /*
@@ -44,7 +44,7 @@ module.exports.StateVsPop = function(request, result)
  */
 module.exports.heatmap = function(request, result) 
 {
-    result.sendFile('heatmap.html',{ root: "./app_server/views" });
+    result.render('heatmap');
 };
 
 
@@ -53,7 +53,6 @@ module.exports.heatmap = function(request, result)
  */
 module.exports.aboutUs = function(request, result) 
 {
-    // result.sendFile('aboutUs.html',{ root: "./app_server/views" });
     result.render('aboutUs', {data : 'Vishal'});
 };
 
@@ -63,7 +62,7 @@ module.exports.aboutUs = function(request, result)
  */
 module.exports.drugName = function(request, result) 
 {
-    result.sendFile('drugName.html',{ root: "./app_server/views" });
+    result.render('drugName');
 };
 
 
@@ -72,7 +71,7 @@ module.exports.drugName = function(request, result)
  */
 module.exports.dragDrop = function(request, result)
 {
-    result.sendFile('dragDrop.html', { root: "./app_server/views"});
+    result.render('dragDrop');
 }
 
 
@@ -137,8 +136,9 @@ module.exports.overdoseGet = function(request, result)
     //var x= results;
     console.log("hitting overdoseGet"+results);
     
-});
-    result.sendFile('Overdoses.html',{ root: "./app_server/views" });
+    });
+    //result.sendFile('Overdoses.html',{ root: "./app_server/views" });
+    result.render('Overdoses');
 
 	// we'd want to pass this above "result" json to out html to display.. so sendFile wont wont work anymore,
     // we'd have to use something like render to pass arguments to front end

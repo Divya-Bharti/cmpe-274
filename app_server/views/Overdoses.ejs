@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/aboutUs.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/overdoseTable.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/overdoseFormPopup.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/dbsearchbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="/jquery-ui-theme/external/jquery/jquery.js"></script>
       	<script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
     <link href="https://unpkg.com/tabulator-tables@4.0.5/dist/css/tabulator.min.css" rel="stylesheet">
@@ -28,11 +30,20 @@
         <a href="/overdose">Overdoses</a>
     </div>
 
-<button style="float:right" onclick="openForm()">Open Form</button>
+<button style="float:right" onclick="openAddForm()">Add Data</button>
 
-<div class="form-popup" id="myForm">
+<div class="topnav">
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search state" name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+<div class="form-popup" id="myAddForm">
   <form action="/action_page.php" class="form-container">
-    <h1>Add/ Update</h1>
+    <h1>Add Form</h1>
 
     <label for="state"><b>State</b></label>
     <input type="text" placeholder="Enter State Name" name="state" required>
@@ -46,7 +57,28 @@
     <label for="abbr"><b>State Abbreviation</b></label>
     <input type="text" placeholder="Enter Abbreviation for state" name="abbr" required>
 
-    <button type="submit" class="btn">Update/Add Record</button>
+    <button type="submit" class="btn">Add Record</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<div class="form-popup" id="myUpdateForm">
+  <form action="overdose" class="form-container">
+    <h1>Update Form</h1>
+
+    <label for="state"><b>State</b></label>
+    <input type="text" id = "state" placeholder="Enter State Name" name="state" required>
+
+    <label for="pop"><b>Population</b></label>
+    <input type="text" id = "population" placeholder="Enter Population of state" name="pop" required>
+    
+    <label for="death"><b>Deaths</b></label>
+    <input type="text" id = "death" placeholder="Enter no. of deaths caused by opm overdose" name="death" required>
+    
+    <label for="abbr"><b>State Abbreviation</b></label>
+    <input type="text" id = "abbreviation" placeholder="Enter Abbreviation for state" name="abbr" required>
+
+    <button type="submit" id = "submit" class="btn">Update Record</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
@@ -59,6 +91,7 @@
             <th>Deaths</th>
             <th>Abbrev</th>
             <th>Delete</th>
+            <th>Update</th>
             
   
           </tr>
@@ -73,6 +106,8 @@
            <td><%= data[i].Deaths %></td>
            <td><%= data[i].Abbrev %></td> 
            <td> <button id = <%= data[i].id %> onclick = "passID(this.id)"> Delete </button></td>
+           <td> <button id = <%= data[i].id %> onclick = "updateID(this.id)"> Update </button></td>
+           
   
          </tr>
       <% } %>
@@ -82,7 +117,6 @@
 
 <script>
   function passID(clickedID) {
-   // alert(clickedID);
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -92,21 +126,64 @@
         "Cache-Control": "no-cache"
       }
     }
-
+  
     $.ajax(settings).done(function (response) {
       alert(response);
       document.location.reload();
     });
   }
+
+  function updateID(clickedID) {
+      openUpdateForm();
+
+      $( "#submit" ).click( function( event ) {
+      event.preventDefault();
+      state_name = document.getElementById("state").value;
+      population = document.getElementById("population").value;
+      death = document.getElementById("death").value;
+      abbr = document.getElementById("abbreviation").value;
+
+      data_val = {
+        "State":state_name,
+        "Population":population,
+        "Deaths":death,
+        "Abbrev":abbr
+      }
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:3000/"+clickedID+"/update",
+        "method": "PUT",
+        "headers": {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(data_val)
+      }
+
+      $.ajax(settings).done(function (response) {
+        closeForm();
+        document.location.reload();
+
+      });
+
+      } );
+    }
 </script>
 
 <script>
-  function openForm() {
-      document.getElementById("myForm").style.display = "block";
+  function openAddForm() {
+      document.getElementById("myAddForm").style.display = "block";
+  }
+
+  function openUpdateForm() {
+      document.getElementById("myUpdateForm").style.display = "block";
   }
   
   function closeForm() {
-      document.getElementById("myForm").style.display = "none";
+      document.getElementById("myAddForm").style.display = "none";
+      document.getElementById("myUpdateForm").style.display = "none";
   }
   </script>
 

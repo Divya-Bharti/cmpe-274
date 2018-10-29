@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 // create a schema
 var overdose = new Schema({
   State: String,
-  Population:Number,
-  Deaths:Number,
+  Population:String,
+  Deaths:String,
   Abbrev:String
 });
 

@@ -53,7 +53,15 @@ router.get('/feedback', ctrlMain.get_feedback);
 /*
  * GET About US page.
  */
+// router.get('/aboutUs', ctrlMain.aboutUs);
+
+
+// router.get('/aboutUs', function(req, res){
+//     res.render('aboutUs',{data : 'trrttggdfjsgfikjbh'})
+// });
+
 router.get('/aboutUs', ctrlMain.aboutUs);
+
 
 /*
  * GET Amogh's page.

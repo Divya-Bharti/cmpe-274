@@ -53,7 +53,8 @@ module.exports.heatmap = function(request, result)
  */
 module.exports.aboutUs = function(request, result) 
 {
-    result.sendFile('aboutUs.html',{ root: "./app_server/views" });
+    // result.sendFile('aboutUs.html',{ root: "./app_server/views" });
+    result.render('aboutUs', {data : 'Vishal'});
 };
 
 
@@ -130,16 +131,19 @@ module.exports.overdoseGet = function(request, result)
     o.Abbrev = "ZZ";
     o.save();
     */
-	// if u check the console.. u'll see the entire db printed.. we have to display this in tabular format
+    // if u check the console.. u'll see the entire db printed.. we have to display this in tabular format
+    
 	Overdose.find({}, function(err, results){
     //var x= results;
     console.log("hitting overdoseGet"+results);
     
 });
     result.sendFile('Overdoses.html',{ root: "./app_server/views" });
+
 	// we'd want to pass this above "result" json to out html to display.. so sendFile wont wont work anymore,
-    //we'd have to use something like render to pass arguments to front end
-    //result.render('Overdoses.html');
+    // we'd have to use something like render to pass arguments to front end
+    // result.render('Overdoses.html');
+
 };
 
 /*

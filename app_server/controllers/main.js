@@ -125,7 +125,7 @@ module.exports.overdoseGet = function(request, result)
     
 	Overdose.find({}, function(err, results){
     //var x= results;
-    console.log("hitting overdoseGet"+results);
+    //console.log("hitting overdoseGet"+results);
     result.render('Overdoses', {data : results});
     
     });
@@ -142,9 +142,39 @@ module.exports.overdoseGet = function(request, result)
  * POST overdose.
  */
  
-module.exports.overdosePost = function(request, result) 
+//module.exports.overdosePost = function(request, result) 
+//{
+    // let val = new Scheme({
+    //       State: String,
+    //       Population:Number,
+    //       Deaths:Number,
+    //       Abbrev:String
+    // });
+    // val.State = request.
+
+    // product.save(function (err) {
+    //     if (err) {
+    //         return next(err);
+    //     }
+    //     res.send('Product Created successfully')
+    // })
+//};
+
+module.exports.overdoseUpdate = function (req, res) 
 {
-    //fill code
+    //var update = JSON.parse(req.body);
+    Overdose.findByIdAndUpdate(req.params.id, { $set: req.body}, function (err, Overdose) {
+        if (err) return next(err);
+        res.send(req.body);
+    });
+};
+
+module.exports.overdoseDelete = function(req, res) 
+{
+    Overdose.findByIdAndRemove(req.params.id, function (err) {
+        if (err) return next(err);
+        res.send('Deleted successfully!');
+    })
 };
 
 /*

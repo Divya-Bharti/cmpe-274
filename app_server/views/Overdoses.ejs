@@ -74,13 +74,33 @@
            <td><%= data[i].Population %></td>
            <td><%= data[i].Deaths %></td>
            <td><%= data[i].Abbrev %></td> 
-           <td> <button> Delete </button></td>
+           <td> <button id = <%= data[i].id %> onclick = "passID(this.id)"> Delete </button></td>
   
          </tr>
       <% } %>
         </tbody>
   
       </table>
+
+<script>
+  function passID(clickedID) {
+   // alert(clickedID);
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://localhost:3000/"+clickedID+"/delete",
+      "method": "DELETE",
+      "headers": {
+        "Cache-Control": "no-cache"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      alert(response);
+      document.location.reload();
+    });
+  }
+</script>
 
 <!-- <script>
 $( document ).ready(function() {

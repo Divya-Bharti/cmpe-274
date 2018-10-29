@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var ctrlMain = require("../controllers/main");
 
-
 /*
  * GET home page.
  */
@@ -90,9 +89,19 @@ router.get('/aboutUs/vijay', ctrlMain.vijay);
 router.get('/overdose', ctrlMain.overdoseGet);
 
 /*
- * POST Overdose page.
+ * DELETE Overdose page.
  */
-router.post('/overdose', ctrlMain.overdosePost);
+router.delete('/:id/delete', ctrlMain.overdoseDelete);
+
+/*
+ * PUT Overdose page.
+ */
+//router.put('/:id/update', ctrlMain.overdoseUpdate);
+router.put('/:id/update', function (req, res) 
+{
+    console.log(req.body);
+    res.send("sucess");
+});
 
 
 

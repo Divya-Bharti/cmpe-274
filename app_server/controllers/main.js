@@ -177,6 +177,16 @@ module.exports.overdoseDelete = function(req, res)
     })
 };
 
+module.exports.overdoseSearch = function(req, res)
+{
+    Overdose.find({ State: req.params.state}, function(err, results){
+
+        // result.render('Overdoses', {data : results});
+        res.send(results);        
+        
+    });
+}
+
 /*
  * GET about us.
  */
@@ -184,7 +194,7 @@ module.exports.aboutUs = function(request, result)
 {
     Overdose.find({}, function(err, results){
 
-        result.render('aboutUs', {data : "about Us test data"  });
+        result.render('aboutUs', {data : "about Us test data" });
         });
          
 };

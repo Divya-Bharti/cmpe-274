@@ -106,7 +106,10 @@ router.delete('/:id/delete', ctrlMain.overdoseDelete);
  */
 router.put('/:id/update', ctrlMain.overdoseUpdate);
 
-
+/*
+ * POST METHOD FOR SEARCHING AND RETREIVING OVERDOSE DATA
+ */
+router.get('/:state/searchoverdose', ctrlMain.overdoseSearch);
 
 //export this router to use in our index.js
 module.exports = router;

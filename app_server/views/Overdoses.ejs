@@ -26,23 +26,79 @@
         <a href="/overdose">Overdoses</a>
     </div>
 
-    <script>
-    $( document ).ready(function() {
-        console.log( "ready!" );
-        var table = new Tabulator("#table", {
-            layout:"fitDataFill",
-            height:"311px",
-            columns:[
-            {title:"State", field:"name"},
-            {title:"Population", field:"progress", align:"right", sorter:"number"},
-            {title:"Deaths", field:"gender"},
-            {title:"Abbrev", field:"rating", align:"center"},
+<!-- <h1> <%= data.length %> </h1> -->
+<style>
+#DrugOverdoseTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#DrugOverdoseTable td, #DrugOverdoseTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#DrugOverdoseTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#DrugOverdoseTable tr:hover {background-color: #ddd;}
+
+#DrugOverdoseTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+<button style="float:right">  Add/Update </button>
+
+<table id="DrugOverdoseTable">
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>Population</th>
+            <th>Deaths</th>
+            <th>Abbrev</th>
+            <th>Delete</th>
             
-            ],
-        });
+  
+          </tr>
+        </thead>
+  
+        <tbody>
+          <% for(var i=0; i < data.length; i++) { %>
+         <tr>
+  
+           <td><%= data[i].State %></td>
+           <td><%= data[i].Population %></td>
+           <td><%= data[i].Deaths %></td>
+           <td><%= data[i].Abbrev %></td> 
+           <td> <button> Delete </button></td>
+  
+         </tr>
+      <% } %>
+        </tbody>
+  
+      </table>
+
+<!-- <script>
+$( document ).ready(function() {
+    console.log( "ready!" );
+    var table = new Tabulator("#table", {
+        layout:"fitDataFill",
+        height:"311px",
+        columns:[
+        {title:"State", field:"name"},
+        {title:"Population", field:"progress", align:"right", sorter:"number"},
+        {title:"Deaths", field:"gender"},
+        {title:"Abbrev", field:"rating", align:"center"},
+        
+        ],
     });
-    </script>
-    <div id="table"></div>
+});
+</script> -->
+<div id="table"></div>
 </body>
 <script type="text/javascript" src="/routes/nav.js"></script>
 </html>

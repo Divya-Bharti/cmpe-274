@@ -2,7 +2,7 @@ h1 {
     text-align: center;
 }
 
-#resizeMe {
+.resizeMe {
     width: 200px;
     height: 200px;
     text-align: center;

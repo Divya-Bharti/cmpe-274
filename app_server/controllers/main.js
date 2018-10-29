@@ -49,15 +49,6 @@ module.exports.heatmap = function(request, result)
 
 
 /*
- * GET about us.
- */
-module.exports.aboutUs = function(request, result) 
-{
-    result.render('aboutUs', {data : 'Vishal'});
-};
-
-
-/*
  * GET drug names.
  */
 module.exports.drugName = function(request, result) 
@@ -135,10 +126,11 @@ module.exports.overdoseGet = function(request, result)
 	Overdose.find({}, function(err, results){
     //var x= results;
     console.log("hitting overdoseGet"+results);
+    result.render('Overdoses', {data : results});
     
     });
     //result.sendFile('Overdoses.html',{ root: "./app_server/views" });
-    result.render('Overdoses');
+    
 
 	// we'd want to pass this above "result" json to out html to display.. so sendFile wont wont work anymore,
     // we'd have to use something like render to pass arguments to front end
@@ -153,6 +145,23 @@ module.exports.overdoseGet = function(request, result)
 module.exports.overdosePost = function(request, result) 
 {
     //fill code
+};
+
+/*
+ * GET about us.
+ */
+module.exports.aboutUs = function(request, result) 
+{
+    Overdose.find({}, function(err, results){
+        //var x= results;
+        // console.log("hitting overdoseGet"+results);
+        result.render('aboutUs', {data : "about Us test data"  });
+        // result.render('Overdoses', {data : "kkk"});
+        
+        });
+        //result.sendFile('Overdoses.html',{ root: "./app_server/views" });
+        // result.render('Overdoses');
+         
 };
 
 

@@ -112,14 +112,13 @@
          </tr>
       <% } %>
         </tbody>
-  
-      </table>
+</table>
 
 <script>
 
   $( "#searchState" ).click( function( event ) {
       event.preventDefault();
-      searched_state = document.getElementById("searchedState").value;
+      searched_state = document.getElementById("searchedState").value.toLowerCase();
 
       // alert("The value searched is " + searched_state);
 
@@ -131,20 +130,28 @@
         "headers": {
           "Content-Type": "application/json",
           "Cache-Control": "no-cache"
+        }
       }
-}
 
-$.ajax(settings).done(function (response) {
-  outputstats = "State : " + response[0].State + "\nPopulation : " + response[0].Population + 
-                "\nDeaths : " + response[0].Deaths + "\nAbbreviation : " + response[0].Abbrev;
-  
-  if (response == undefined) {
-    outputstats = "RECORD NOT FOUND!";
-  }
+      $.ajax(settings).done(function (response) {
 
-  alert(outputstats)
-});
+        if (!isEmpty(response)) {
+          outputstats = "State : " + response[0].State + "\nPopulation : " + response[0].Population + 
+                      "\nDeaths : " + response[0].Deaths + "\nAbbreviation : " + response[0].Abbrev;
+        }else{
+          outputstats = "RECORD NOT FOUND";
+        }
+        
+        alert(outputstats);  
+      });
 
+      function isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+            return true;
+      };
   });
 
   function passID(clickedID) {
@@ -169,7 +176,7 @@ $.ajax(settings).done(function (response) {
 
       $( "#submitUpdate" ).click( function( event ) {
       event.preventDefault();
-      state_name = document.getElementById("Ustate").value;
+      state_name = document.getElementById("Ustate").value.toLowerCase();
       population = document.getElementById("Upopulation").value;
       death = document.getElementById("Udeath").value;
       abbr = document.getElementById("Uabbreviation").value; 
@@ -211,7 +218,7 @@ $.ajax(settings).done(function (response) {
 
       $( "#submitAdd" ).click( function( event ) {
       event.preventDefault();
-      state_name = document.getElementById("state").value;
+      state_name = document.getElementById("state").value.toLowerCase();
       population = document.getElementById("population").value;
       death = document.getElementById("death").value;
       abbr = document.getElementById("abbreviation").value;

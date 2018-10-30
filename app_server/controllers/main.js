@@ -180,7 +180,7 @@ module.exports.overdoseDelete = function(req, res)
 module.exports.overdoseSearch = function(req, res)
 {
     Overdose.find({ State: req.params.state}, function(err, results){
-        if (err) return next(err);
+
         // result.render('Overdoses', {data : results});
         res.send(results);        
         

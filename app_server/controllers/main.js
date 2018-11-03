@@ -3,7 +3,7 @@
  */
 module.exports.home = function(request, result) 
 {
-    result.sendFile('index.html',{ root: "./app_server/views" });
+    result.render('index');
 };
 
 /*
@@ -11,7 +11,7 @@ module.exports.home = function(request, result)
  */
 module.exports.get_feedback = function(request, result) 
 {
-    result.sendFile('feedback.html',{ root: "./app_server/views" });
+    result.render('feedback');
 };
 
 /*
@@ -28,7 +28,7 @@ module.exports.get_feedback = function(request, result)
  */
 module.exports.StateVsDeath = function(request, result) 
 {
-    result.sendFile('StateVsDeath.html',{ root: "./app_server/views" });
+    result.render('StateVsDeath');
 };
 
 /*
@@ -36,7 +36,7 @@ module.exports.StateVsDeath = function(request, result)
  */
 module.exports.StateVsPop = function(request, result) 
 {
-    result.sendFile('StateVsPop.html',{ root: "./app_server/views" });
+    result.render('StateVsPop');
 };
 
 /*
@@ -44,16 +44,7 @@ module.exports.StateVsPop = function(request, result)
  */
 module.exports.heatmap = function(request, result) 
 {
-    result.sendFile('heatmap.html',{ root: "./app_server/views" });
-};
-
-
-/*
- * GET about us.
- */
-module.exports.aboutUs = function(request, result) 
-{
-    result.sendFile('aboutUs.html',{ root: "./app_server/views" });
+    result.render('heatmap');
 };
 
 
@@ -62,7 +53,7 @@ module.exports.aboutUs = function(request, result)
  */
 module.exports.drugName = function(request, result) 
 {
-    result.sendFile('drugName.html',{ root: "./app_server/views" });
+    result.render('drugName');
 };
 
 
@@ -71,7 +62,7 @@ module.exports.drugName = function(request, result)
  */
 module.exports.dragDrop = function(request, result)
 {
-    result.sendFile('dragDrop.html', { root: "./app_server/views"});
+    result.render('dragDrop');
 }
 
 
@@ -130,25 +121,82 @@ module.exports.overdoseGet = function(request, result)
     o.Abbrev = "ZZ";
     o.save();
     */
-	// if u check the console.. u'll see the entire db printed.. we have to display this in tabular format
+    // if u check the console.. u'll see the entire db printed.. we have to display this in tabular format
+    
 	Overdose.find({}, function(err, results){
     //var x= results;
-    console.log("hitting overdoseGet"+results);
+    //console.log("hitting overdoseGet"+results);
+    result.render('Overdoses', {data : results});
     
-});
-    result.sendFile('Overdoses.html',{ root: "./app_server/views" });
+    });
+    //result.sendFile('Overdoses.html',{ root: "./app_server/views" });
+    
+
 	// we'd want to pass this above "result" json to out html to display.. so sendFile wont wont work anymore,
-    //we'd have to use something like render to pass arguments to front end
-    //result.render('Overdoses.html');
+    // we'd have to use something like render to pass arguments to front end
+    // result.render('Overdoses.html');
+
 };
 
 /*
  * POST overdose.
  */
- 
-module.exports.overdosePost = function(request, result) 
+ module.exports.overdosePost = function(req, res) 
 {
-    //fill code
+    let product = new Overdose(
+        {
+            State: req.body.State,
+            Population: req.body.Population,
+            Deaths: req.body.Deaths,
+            Abbrev: req.body.Abbrev
+        }
+    );
+
+    product.save(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.send('Entry Inserted successfully')
+    })
+};
+
+module.exports.overdoseUpdate = function (req, res) 
+{
+    //var update = JSON.parse(req.body);
+    Overdose.findByIdAndUpdate(req.params.id, { $set: req.body}, function (err, Overdose) {
+        if (err) return next(err);
+        res.send(req.body);
+    });
+};
+
+module.exports.overdoseDelete = function(req, res) 
+{
+    Overdose.findByIdAndRemove(req.params.id, function (err) {
+        if (err) return next(err);
+        res.send('Deleted successfully!');
+    })
+};
+
+module.exports.overdoseSearch = function(req, res)
+{
+    Overdose.find({ State: req.params.state}, function(err, results){
+
+        // result.render('Overdoses', {data : results});
+        res.send(results);        
+        
+    });
+}
+
+/*
+ * GET about us.
+ */
+module.exports.aboutUs = function(request, result) 
+{
+    Overdose.find({}, function(err, results){
+
+        result.render('aboutUs', {data : "about Us test data" });
+        });
+         
 };
 
 

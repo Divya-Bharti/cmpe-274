@@ -1,7 +1,10 @@
+var bodyParser = require('body-parser');
 var express = require('express');
 var router = express.Router();
 var ctrlMain = require("../controllers/main");
 
+router.use("/", bodyParser.json());
+router.use("/", bodyParser.urlencoded());
 
 /*
  * GET home page.
@@ -53,7 +56,15 @@ router.get('/feedback', ctrlMain.get_feedback);
 /*
  * GET About US page.
  */
+// router.get('/aboutUs', ctrlMain.aboutUs);
+
+
+// router.get('/aboutUs', function(req, res){
+//     res.render('aboutUs',{data : 'trrttggdfjsgfikjbh'})
+// });
+
 router.get('/aboutUs', ctrlMain.aboutUs);
+
 
 /*
  * GET Amogh's page.
@@ -75,6 +86,10 @@ router.get('/aboutUs/indira', ctrlMain.indira);
  */
 router.get('/aboutUs/vijay', ctrlMain.vijay);
 
+/*
+ * POST Overdose page.
+ */
+router.post('/overdose', ctrlMain.overdosePost);
 
 /*
  * GET Overdose page.
@@ -82,11 +97,19 @@ router.get('/aboutUs/vijay', ctrlMain.vijay);
 router.get('/overdose', ctrlMain.overdoseGet);
 
 /*
- * POST Overdose page.
+ * DELETE Overdose page.
  */
-router.post('/overdose', ctrlMain.overdosePost);
+router.delete('/:id/delete', ctrlMain.overdoseDelete);
 
+/*
+ * PUT Overdose page.
+ */
+router.put('/:id/update', ctrlMain.overdoseUpdate);
 
+/*
+ * POST METHOD FOR SEARCHING AND RETREIVING OVERDOSE DATA
+ */
+router.get('/:state/searchoverdose', ctrlMain.overdoseSearch);
 
 //export this router to use in our index.js
 module.exports = router;

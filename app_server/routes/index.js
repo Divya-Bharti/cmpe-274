@@ -111,5 +111,8 @@ router.put('/:id/update', ctrlMain.overdoseUpdate);
  */
 router.get('/:state/searchoverdose', ctrlMain.overdoseSearch);
 
+// get dashboard
+router.get('/dashboard', ctrlMain.dashboard);
+
 //export this router to use in our index.js
 module.exports = router;

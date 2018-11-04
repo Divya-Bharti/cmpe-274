@@ -107,6 +107,7 @@ module.exports.vijay = function(request, result)
 
 
 var Overdose = require('../models/overdose');
+var OverdoseNew = require('../models/overdoseNew');
 
 /*
  * GET overdose.
@@ -199,4 +200,32 @@ module.exports.aboutUs = function(request, result)
          
 };
 
+
+/*
+ * GET about us.
+ */
+module.exports.dashboard = function(request, result) 
+{
+	
+	OverdoseNew.find({}, function(err, results){
+		
+		var columns =["State","Deaths"];
+		
+		 var tableRow = [];
+		
+		 
+			results.forEach(function (row) {
+		    tableRow.push([row.State,row.Deaths]);
+		    });
+			
+		    console.log(tableRow);
+		 
+	
+		
+	    result.render('dashboard', {columns : JSON.stringify(columns),tableRow:JSON.stringify(tableRow)});
+		
+	    });
+        
+         
+};
 

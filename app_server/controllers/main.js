@@ -242,6 +242,5 @@ module.exports.dashboard =  async function(req, res) {
     var female = fCount[0].count;
 
     res.render('dashboard', {male, female, columns : JSON.stringify(columns),tableRow:JSON.stringify(tableRow)});
-
-  };
+};
 

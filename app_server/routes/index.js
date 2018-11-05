@@ -9,7 +9,7 @@ router.use("/", bodyParser.urlencoded());
 /*
  * GET home page.
  */
-router.get('/', ctrlMain.home);
+router.get('/', ctrlMain.dashboard);
 
 /*
  * GET home page.

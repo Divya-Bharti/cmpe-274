@@ -1,7 +1,27 @@
 <html>
   <head>
     <!--Load the AJAX API-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/dashboard.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+      .button {
+        background-color: #52527a;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
+
     <script type="text/javascript">
 
       // Load the Visualization API and the corechart package.
@@ -10,7 +30,7 @@
       // Set a callback to run when the Google Visualization API is loaded.
       // google.charts.setOnLoadCallback(drawChart);
       google.charts.setOnLoadCallback(drawChart1);
-      google.charts.setOnLoadCallback(drawChart3);
+      google.charts.setOnLoadCallback(drawChart2);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
@@ -23,24 +43,26 @@
           // Create the data table.
           var dataTable = new google.visualization.DataTable();
           dataTable.addColumn('string', 'State');
-          dataTable.addColumn('number', 'Population');
+          dataTable.addColumn('number', 'Deaths by Opioid Overdose');
        
           dataTable.addRows(tableRow);
 
           // Set chart options
           var options = {'title':'State vs Deaths',
-                         'width':1400,
-                         'height':500,
+                         'width':700,
+                         'height':300,
                          'backgroundColor':'#FAF6F5',
                          'color':'red',
-                          };
+                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'legend': {'position': 'bottom', 'alignment':'center'}
+          };
 
           // Instantiate and draw our chart, passing in some options.
           var chart1 = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
           chart1.draw(dataTable, options);
       }
 
-      function drawChart3() {
+      function drawChart2() {
           var M=<%- male %>;
           var F=<%- female %>;
 
@@ -51,22 +73,47 @@
         ]);
 
         var options = {
-          title: 'My Daily Activities',
-          is3D: true,
+                      'title': 'Opioid Doctor - Gender Distribution',
+                      'width':250,
+                      'height':300,
+                      'legend': {'position': 'bottom', 'alignment':'center'},
+                      'chartArea': {'width': '80%', 'height': '60%'}
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div3'));
-        chart.draw(data, options);
+        var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+        chart2.draw(data, options);
       }
 
     </script>
   </head>
 
   <body>
-    <!--Div that will hold the pie chart-->
-    <!-- <div style="border: 1px solid #ccc"  id="chart_div"></div> -->
-    <div style="border: 1px solid #ccc" id="chart_div1"></div>
-    <div style="border: 1px solid #ccc" id="chart_div3"></div>
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+
+    <h2>DashBoard</h2>
+
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/home">Homepage</a>
+      <a href="/StateVsDeath">State vs Opioid Deaths</a>
+      <a href="/StateVsPop">State vs Population</a>
+      <a href="/heatmap">HeatMap</a>
+      <a href="/feedback">Feedback</a>
+      <a href="/aboutUs">About Us</a>
+      <a href="/overdose">Overdoses</a>
+      <a href="/dashboard">Dashboard</a>
+    </div>
+
+
+    <div>
+          <!--Div that will hold the pie chart-->
+          <div style="position: relative;width: 700px;" id="chart_div1"></div>
+          <div style="position: relative;width: 250px;" id="chart_div2"></div>
+    </div>
 
   </body>
+
+  <script type="text/javascript" src="/routes/nav.js"></script>
+
 </html>

@@ -52,7 +52,7 @@
 
           // Set chart options
           var options = {'title':'State vs Deaths Caused By Opioid Overdose',
-                         'width':500,
+                         'width':550,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
@@ -101,11 +101,11 @@
           dataTable3.addRows(statevspres_row);
 
           // Set chart options
-          var options3 = {'title':'Top 10 Opioid Drug Prescribed',
-                         'width':500,
+          var options3 = {'title':'Top 10 States with most Opioid Drugs Prescribed',
+                         'width':550,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
-                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'chartArea': {'width': '70%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
@@ -126,8 +126,8 @@
           dataTable4.addRows(specvspres_row);
 
           // Set chart options
-          var options4 = {'title':'State vs # Opioid Drugs Prescribed',
-                         'width':500,
+          var options4 = {'title':'Specialty vs # Opioid Drugs Prescribed ( x 10^(4))',
+                         'width':850,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
@@ -152,7 +152,7 @@
 
           // Set chart options
           var options5 = {'title':'State vs Death Rate Due to Opioid Consumption ( x 10^(-4))',
-                         'width':500,
+                         'width':525,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
@@ -186,22 +186,12 @@
       <a href="/dashboard">Dashboard</a>
     </div>
 
-
     <div>
           <!--Div that will hold the pie chart-->
           <div style="position: relative;" id="chart_div1"></div>
-          <div style="position: relative;width: 250px;" id="chart_div2"></div>
-    </div>
-
-    <div>
+          <div style="position: relative;" id="chart_div2"></div>
           <div style="position: relative;" id="chart_div3"></div>
-    </div>
-
-    <div>
           <div style="position: relative;" id="chart_div4"></div>
-    </div>
-
-    <div>
           <div style="position: relative;" id="chart_div5"></div>
     </div>
 

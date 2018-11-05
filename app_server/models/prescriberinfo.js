@@ -7,7 +7,7 @@ var Int32 = require('mongoose-int32')
 var prescriberinfo = new Schema({
   Gender: String,
   State:String,
-  Speciality:String,
+  Specialty:String,
   Prescriptions: Int32
 }); 
 

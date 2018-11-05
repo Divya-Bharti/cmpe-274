@@ -207,6 +207,71 @@ module.exports.aboutUs = function(request, result)
  * GET about us.
  */
 module.exports.dashboard =  async function(req, res) {
+
+    var state_dict = 
+    {
+        "AL": "Alabam",
+        "AK": "Alaska",
+        "AZ": "Arizona",
+        "AR": "Arkansas",
+        "CA": "California",
+        "CO": "Colorado",
+        "CT": "Connecticut",
+        "DE": "Delaware",
+        "FL": "Florida",
+        "GA": "Georgia",
+        "HI": "Hawaii",
+        "ID": "Idaho",
+        "IL": "Illinois",
+        "IN": "California",
+        "IA": "Iowa",
+        "KS": "Kansas",
+        "KY": "Kentucky",
+        "LA": "Louisiana",
+        "ME": "Maine",
+        "MD": "Maryland",
+        "MA": "Massachusetts",
+        "MI": "Michigan",
+        "MN": "Minnesota",
+        "MS": "Mississippi",
+        "MO": "Missouri",
+        "MT": "Montana",
+        "NE": "Nebraska",
+        "NV": "Nevada",
+        "NH": "New Hampshire",
+        "NJ": "New Jersey",
+        "NM": "New Mexico",
+        "NY": "New York",
+        "NC": "North Carolina",
+        "ND": "North Dakota",
+        "OH": "Ohio",
+        "OK": "Oklahoma",
+        "OR": "Oregon",
+        "PA": "Pennsylvania",
+        "RI": "Rhode Island",
+        "SC": "South Carolina",
+        "SD": "South Dakota",
+        "TN": "Tennessee",
+        "TX": "Texas",
+        "UT": "Utah",
+        "VT": "Vermont",
+        "VA": "Virginia",
+        "WA": "Washington",
+        "WV": "West Virginia",
+        "WI": "Wisconsin",
+        "WY": "Wyoming",
+        "AS" :  "American Samoa",
+        "DC" :  "District of Columbia",
+        "FM" :  "Federated States of Micronesia",
+        "GU" :  "Guam",
+        "MH" :  "Marshall Islands",
+        "MP" :  "Northern Mariana Islands",
+        "PW" :  "Palau",
+        "PR" :  "Puerto Rico",
+        "VI" :  "Virgin Islands"
+    }
+
+
     var fCount = await prescriberInfo.aggregate([
         { $match: {"Gender": "F"}},
         { 
@@ -256,26 +321,43 @@ module.exports.dashboard =  async function(req, res) {
 
     statevspres_columns =["State", "PrescriptionsCount"]
     statevspres_rows = []
+    
     statevspres.forEach(function (row) {
-      statevspres_rows.push([row._id,row.count]);
+      
+      if (state_dict[row._id] != undefined) {
+        // console.log(state_dict[row._id]);
+        statevspres_rows.push([state_dict[row._id],row.count]);
+      }
+      else {
+          // console.log(row._id)
+          statevspres_rows.push([row._id,row.count]);
+      }
     });
 
-    // var specialityvspres = await prescriberInfo.aggregate([ { 
-    //     $group: {
-    //       _id: "$Specialty", 
-    //       count: { $sum: "$Prescriptions"}
-    //     }
-    // }]);
+    var specialityvspres = await prescriberInfo.aggregate([ { 
+        $group: {
+          _id: "$Specialty", 
+          count: { $sum: "$Prescriptions"}
+        }
+    }]);
 
-    var specialityvspres = await prescriberInfo.find().sort({"Prescriptions" : -1}).limit(10);
+    specialityvspres.sort(function(a,b){
+        return b.count - a.count;
+    })
+
+    // var specialityvspres = await prescriberInfo.find().sort({"Prescriptions" : -1}).limit(10);
 
     specvspres_columns =["Specialty", "PrescriptionsCount"]
     specvspres_rows = []
+    var i = 0;
     specialityvspres.forEach(function (row) {
-      specvspres_rows.push([row.State,row.Prescriptions]);
+        if ( i < 10){
+            specvspres_rows.push([row._id, row.count/10000]);
+        }
+        i = i + 1;
     });
 
-    console.log(specvspres_rows);
+    // console.log(specvspres_rows);
 
     var stateVsDeathRatio = await OverdoseNew.aggregate([
         { $project: {
@@ -289,7 +371,7 @@ module.exports.dashboard =  async function(req, res) {
         return b.ratio - a.ratio;
     });
 
-    console.log(stateVsDeathRatio);
+    // console.log(stateVsDeathRatio);
     
     statevsdeath_columns = ["State","DeathPopRatio"]
     statevsdeath_rows = []

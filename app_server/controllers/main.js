@@ -1,6 +1,6 @@
 var Overdose = require('../models/overdose');
 var OverdoseNew = require('../models/overdoseNew');
-var PrescriberInfo = require('../models/prescriberinfo');
+var prescriberInfo = require('../models/prescriberinfo');
 
 /*
  * GET home page.
@@ -206,36 +206,42 @@ module.exports.aboutUs = function(request, result)
 /*
  * GET about us.
  */
-module.exports.dashboard = function(request, result) 
-{
-	
-	// OverdoseNew.find({}, function(err, results){
-		
-	// 	var columns =["State","Deaths"];
-	// 	var tableRow = [];
-		
-	// 	results.forEach(function (row) {
-	// 	    tableRow.push([row.State,row.Deaths]);
-	// 	});
-		
-	//     result.render('dashboard', {columns : JSON.stringify(columns),tableRow:JSON.stringify(tableRow)});
-	// });
+module.exports.dashboard =  async function(req, res) {
+    var fCount = await prescriberInfo.aggregate([
+        { $match: {"Gender": "F"}},
+        { 
+        $group: {
+          _id: null, 
+          count: {
+            $sum: 1
+          }
+        }
+      }]);
 
-    PrescriberInfo.find({}, function(err, results){
+    var mCount = await prescriberInfo.aggregate([
+        { $match: {"Gender": "M"}},
+        { 
+        $group: {
+          _id: null, 
+          count: {
+            $sum: 1
+          }
+        }
+      }]);
+
+    var overdose_res = await OverdoseNew.find({});
         
-        var columns =["Gender", "State"];
-        var tableRow = [];
-         
-        results.forEach(function (row) {
-            tableRow.push([row.Gender]);
-        });
-
-        console.log(tableRow);
-         
-        result.render('dashboard', {columns : JSON.stringify(columns), tableRow:JSON.stringify(tableRow)});
+    var columns =["State","Deaths"];
+    var tableRow = [];
+        
+    overdose_res.forEach(function (row) {
+      tableRow.push([row.State,row.Deaths]);
     });
 
+    var male = mCount[0].count;
+    var female = fCount[0].count;
 
-         
-};
+    res.render('dashboard', {male, female, columns : JSON.stringify(columns),tableRow:JSON.stringify(tableRow)});
+
+  };
 

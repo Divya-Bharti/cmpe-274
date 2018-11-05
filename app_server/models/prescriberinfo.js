@@ -7,7 +7,7 @@ var prescriberinfo = new Schema({
   Gender: String,
   State:String,
   Speciality:String
-},{ collection : 'prescriberinfos' }); 
+}); 
 
 // the schema is useless so far
 // we need to create a model using it

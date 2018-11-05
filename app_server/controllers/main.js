@@ -233,7 +233,7 @@ module.exports.dashboard = function(request, result)
         console.log(tableRow);
          
         result.render('dashboard', {columns : JSON.stringify(columns), tableRow:JSON.stringify(tableRow)});
-    }).limit(100);
+    });
 
 
          

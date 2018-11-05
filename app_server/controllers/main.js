@@ -263,9 +263,28 @@ module.exports.dashboard =  async function(req, res) {
 
     specvspres_columns =["Specialty", "PrescriptionsCount"]
     specvspres_rows = []
-    statevspres.forEach(function (row) {
+    specialityvspres.forEach(function (row) {
       statevspres_rows.push([row._id,row.count]);
     });
+
+    var stateVsDeathRatio = await OverdoseNew.aggregate([
+        { $project: {
+            _id : "$State",
+              ratio : { $divide :["$Deaths", "$Population"] } 
+              }
+          }
+        ])
+    
+    statevsdeath_columns = ["State","DeathPopRatio"]
+    statevsdeath_rows = []
+    stateVsDeathRatio.forEach(function(row) {
+        statevsdeath_rows.push([row._id, row.ratio])
+    })
+
+    console.log(statevsdeath_columns)
+    console.log("********")
+    console.log(statevsdeath_rows)
+
     
     res.render('dashboard', {
             male, 
@@ -275,7 +294,9 @@ module.exports.dashboard =  async function(req, res) {
             statevspres_col : statevspres_columns,
             statevspres_row : statevspres_rows,
             specvspres_col : specvspres_columns,
-            specvspres_row : specvspres_rows
+            specvspres_row : specvspres_rows,
+            statevsdeath_columns : statevsdeath_columns,
+            statevsdeath_rows : statevsdeath_rows
         }
     );
 };

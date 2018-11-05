@@ -233,7 +233,7 @@ module.exports.dashboard =  async function(req, res) {
     var female = fCount[0].count;
 
 
-    var overdose_res = await OverdoseNew.find({});
+    var overdose_res = await OverdoseNew.find().sort({"Deaths" : -1}).limit(10);
     var columns =["State","Deaths"];
     var tableRow = [];
         
@@ -246,7 +246,13 @@ module.exports.dashboard =  async function(req, res) {
           _id: "$State", 
           count: { $sum: "$Prescriptions"}
         }
-      }]);
+      }]).limit(10);
+
+    statevspres.sort(function (a, b){
+        return a.count - b.count;
+    });
+
+    // console.log(statevspres);
 
     statevspres_columns =["State", "PrescriptionsCount"]
     statevspres_rows = []
@@ -254,39 +260,43 @@ module.exports.dashboard =  async function(req, res) {
       statevspres_rows.push([row._id,row.count]);
     });
 
-    var specialityvspres = await prescriberInfo.aggregate([ { 
-        $group: {
-          _id: "$Specialty", 
-          count: { $sum: "$Prescriptions"}
-        }
-      }]);
+    // var specialityvspres = await prescriberInfo.aggregate([ { 
+    //     $group: {
+    //       _id: "$Specialty", 
+    //       count: { $sum: "$Prescriptions"}
+    //     }
+    // }]);
+
+    var specialityvspres = await prescriberInfo.find().sort({"Prescriptions" : -1}).limit(10);
 
     specvspres_columns =["Specialty", "PrescriptionsCount"]
     specvspres_rows = []
     specialityvspres.forEach(function (row) {
-      specvspres_rows.push([row._id,row.count]);
+      specvspres_rows.push([row.State,row.Prescriptions]);
     });
+
+    console.log(specvspres_rows);
 
     var stateVsDeathRatio = await OverdoseNew.aggregate([
         { $project: {
             _id : "$State",
-              ratio : { $divide :["$Deaths", "$Population"] } 
-              }
-          }
-        ])
+            ratio : { $divide :["$Deaths", "$Population"] } 
+            }
+        }
+    ]).limit(10);
+
+    stateVsDeathRatio.sort(function(a,b){
+        return b.ratio - a.ratio;
+    });
+
+    console.log(stateVsDeathRatio);
     
     statevsdeath_columns = ["State","DeathPopRatio"]
     statevsdeath_rows = []
+
     stateVsDeathRatio.forEach(function(row) {
         statevsdeath_rows.push([row._id, row.ratio])
     })
-
-    // console.log(statevsdeath_columns)
-    // console.log("********")
-    // console.log(statevsdeath_rows)
-
-    console.log(specvspres_rows);
-
     
     res.render('dashboard', {
             male, 

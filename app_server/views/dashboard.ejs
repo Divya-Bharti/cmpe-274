@@ -52,10 +52,9 @@
 
           // Set chart options
           var options = {'title':'State vs Deaths',
-                         'width':700,
+                         'width':500,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
-                         'color':'red',
                          'chartArea': {'width': '80%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
@@ -79,6 +78,7 @@
                       'title': 'Opioid Doctor - Gender Distribution',
                       'width':250,
                       'height':300,
+                      'backgroundColor':'#FAF6F5',
                       'legend': {'position': 'bottom', 'alignment':'center'},
                       'chartArea': {'width': '80%', 'height': '60%'}
         };
@@ -100,16 +100,15 @@
 
           // Set chart options
           var options3 = {'title':'State vs Prescription',
-                         'width':1000,
-                         'height':500,
+                         'width':500,
+                         'height':300,
                          'backgroundColor':'#FAF6F5',
-                         'color':'red',
-                         'chartArea': {'width': '90%', 'height': '80%'},
+                         'chartArea': {'width': '80%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
           // Instantiate and draw our chart, passing in some options.
-          var chart3 = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+          var chart3 = new google.visualization.BarChart(document.getElementById('chart_div3'));
           chart3.draw(dataTable3, options3);
       }
 
@@ -126,11 +125,10 @@
 
           // Set chart options
           var options4 = {'title':'Specialization vs Prescription',
-                         'width':1000,
-                         'height':500,
+                         'width':500,
+                         'height':300,
                          'backgroundColor':'#FAF6F5',
-                         'color':'red',
-                         'chartArea': {'width': '90%', 'height': '80%'},
+                         'chartArea': {'width': '80%', 'height': '60%'},
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
@@ -152,11 +150,11 @@
 
           // Set chart options
           var options5 = {'title':'State vs Deaths',
-                         'width':1000,
-                         'height':500,
+                         'width':500,
+                         'height':300,
                          'backgroundColor':'#FAF6F5',
-                         'color':'red',
-                         'chartArea': {'width': '90%', 'height': '80%'},
+                         'chartArea': {'width': '80%', 'height': '60%'},
+                         'vAxis' : { 'gridlines': { 'count': 4 } },
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
@@ -189,20 +187,20 @@
 
     <div>
           <!--Div that will hold the pie chart-->
-          <div style="position: relative;width: 700px;" id="chart_div1"></div>
+          <div style="position: relative;" id="chart_div1"></div>
           <div style="position: relative;width: 250px;" id="chart_div2"></div>
     </div>
 
     <div>
-          <div style="position: relative;width: 1000px;" id="chart_div3"></div>
+          <div style="position: relative;" id="chart_div3"></div>
     </div>
 
     <div>
-          <div style="position: relative;width: 1000px;" id="chart_div4"></div>
+          <div style="position: relative;" id="chart_div4"></div>
     </div>
 
     <div>
-          <div style="position: relative;width: 1000px;" id="chart_div5"></div>
+          <div style="position: relative;" id="chart_div5"></div>
     </div>
 
   </body>

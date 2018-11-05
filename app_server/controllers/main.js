@@ -229,8 +229,11 @@ module.exports.dashboard =  async function(req, res) {
         }
       }]);
 
+    var male = mCount[0].count;
+    var female = fCount[0].count;
+
+
     var overdose_res = await OverdoseNew.find({});
-        
     var columns =["State","Deaths"];
     var tableRow = [];
         
@@ -238,9 +241,27 @@ module.exports.dashboard =  async function(req, res) {
       tableRow.push([row.State,row.Deaths]);
     });
 
-    var male = mCount[0].count;
-    var female = fCount[0].count;
+    var statevspres = await prescriberInfo.aggregate([ { 
+        $group: {
+          _id: "$State", 
+          count: { $sum: "$Prescriptions"}
+        }
+      }]);
 
-    res.render('dashboard', {male, female, columns : JSON.stringify(columns),tableRow:JSON.stringify(tableRow)});
+    statevspres_columns =["State", "PrescriptionsCount"]
+    statevspres_rows = []
+    statevspres.forEach(function (row) {
+      statevspres_rows.push([row._id,row.count]);
+    });
+    
+    res.render('dashboard', {
+            male, 
+            female, 
+            columns : JSON.stringify(columns),
+            tableRow:JSON.stringify(tableRow),
+            statevspres_col : statevspres_columns,
+            statevspres_row : statevspres_rows
+        }
+    );
 };
 

@@ -253,6 +253,19 @@ module.exports.dashboard =  async function(req, res) {
     statevspres.forEach(function (row) {
       statevspres_rows.push([row._id,row.count]);
     });
+
+    var specialityvspres = await prescriberInfo.aggregate([ { 
+        $group: {
+          _id: "$Specialty", 
+          count: { $sum: "$Prescriptions"}
+        }
+      }]);
+
+    specvspres_columns =["Specialty", "PrescriptionsCount"]
+    specvspres_rows = []
+    statevspres.forEach(function (row) {
+      statevspres_rows.push([row._id,row.count]);
+    });
     
     res.render('dashboard', {
             male, 
@@ -260,7 +273,9 @@ module.exports.dashboard =  async function(req, res) {
             columns : JSON.stringify(columns),
             tableRow:JSON.stringify(tableRow),
             statevspres_col : statevspres_columns,
-            statevspres_row : statevspres_rows
+            statevspres_row : statevspres_rows,
+            specvspres_col : specvspres_columns,
+            specvspres_row : specvspres_rows
         }
     );
 };

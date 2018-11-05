@@ -57,7 +57,7 @@
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
                          'colors': ['red'],
-                         // 'legend': {'position': 'bottom', 'alignment':'center'}
+                         'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
           // Instantiate and draw our chart, passing in some options.
@@ -70,7 +70,7 @@
           var F=<%- female %>;
 
           var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
+          ['Gender', 'Type'],
           ['Male', M],
           ['Female', F],
         ]);
@@ -96,13 +96,13 @@
           // Create the data table.
           var dataTable3 = new google.visualization.DataTable();
           dataTable3.addColumn('string', 'State');
-          dataTable3.addColumn('number', 'Prescription');
+          dataTable3.addColumn('number', 'Prescription Count');
        
           dataTable3.addRows(statevspres_row);
 
           // Set chart options
           var options3 = {'title':'Top 10 States with most Opioid Drugs Prescribed',
-                         'width':550,
+                         'width':565,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '70%', 'height': '60%'},
@@ -121,7 +121,7 @@
           // Create the data table.
           var dataTable4 = new google.visualization.DataTable();
           dataTable4.addColumn('string', 'Specialization');
-          dataTable4.addColumn('number', 'Prescription');
+          dataTable4.addColumn('number', 'Number of drugs prescribed by the Doctor');
        
           dataTable4.addRows(specvspres_row);
 
@@ -146,7 +146,7 @@
           // Create the data table.
           var dataTable5 = new google.visualization.DataTable();
           dataTable5.addColumn('string', 'State');
-          dataTable5.addColumn('number', 'Deaths');
+          dataTable5.addColumn('number', 'Death Ratio (Deaths by Opioid Overdose / Population)');
        
           dataTable5.addRows(statevsdeath_rows);
 

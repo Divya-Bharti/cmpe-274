@@ -264,7 +264,7 @@ module.exports.dashboard =  async function(req, res) {
     specvspres_columns =["Specialty", "PrescriptionsCount"]
     specvspres_rows = []
     specialityvspres.forEach(function (row) {
-      statevspres_rows.push([row._id,row.count]);
+      specvspres_rows.push([row._id,row.count]);
     });
 
     var stateVsDeathRatio = await OverdoseNew.aggregate([
@@ -281,22 +281,24 @@ module.exports.dashboard =  async function(req, res) {
         statevsdeath_rows.push([row._id, row.ratio])
     })
 
-    console.log(statevsdeath_columns)
-    console.log("********")
-    console.log(statevsdeath_rows)
+    // console.log(statevsdeath_columns)
+    // console.log("********")
+    // console.log(statevsdeath_rows)
+
+    console.log(specvspres_rows);
 
     
     res.render('dashboard', {
             male, 
             female, 
             columns : JSON.stringify(columns),
-            tableRow:JSON.stringify(tableRow),
-            statevspres_col : statevspres_columns,
-            statevspres_row : statevspres_rows,
-            specvspres_col : specvspres_columns,
-            specvspres_row : specvspres_rows,
-            statevsdeath_columns : statevsdeath_columns,
-            statevsdeath_rows : statevsdeath_rows
+            tableRow : JSON.stringify(tableRow),
+            statevspres_col : JSON.stringify(statevspres_columns),
+            statevspres_row : JSON.stringify(statevspres_rows),
+            specvspres_col : JSON.stringify(specvspres_columns),
+            specvspres_row : JSON.stringify(specvspres_rows),
+            statevsdeath_columns : JSON.stringify(statevsdeath_columns),
+            statevsdeath_rows : JSON.stringify(statevsdeath_rows)
         }
     );
 };

@@ -9,3 +9,24 @@
     float: right;
     padding: 10px;
 }
+
+#chart_div3 {
+	border: 1px solid #ccc;
+    float: right;
+    padding: 10px;
+    /*margin-top: 400px;*/
+}
+
+#chart_div4 {
+	border: 1px solid #ccc;
+    float: right;
+    padding: 10px;
+    /*margin-top: 400px;*/
+}
+
+#chart_div5 {
+	border: 1px solid #ccc;
+    float: right;
+    padding: 10px;
+    /*margin-top: 400px;*/
+}

@@ -31,6 +31,9 @@
       // google.charts.setOnLoadCallback(drawChart);
       google.charts.setOnLoadCallback(drawChart1);
       google.charts.setOnLoadCallback(drawChart2);
+      google.charts.setOnLoadCallback(drawChart3);
+      google.charts.setOnLoadCallback(drawChart4);
+      google.charts.setOnLoadCallback(drawChart5);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
@@ -84,6 +87,84 @@
         chart2.draw(data, options);
       }
 
+      function drawChart3() {
+          var statevspres_col=<%- statevspres_col %>;
+          var statevspres_row=<%- statevspres_row %>;
+
+          // Create the data table.
+          var dataTable3 = new google.visualization.DataTable();
+          dataTable3.addColumn('string', 'State');
+          dataTable3.addColumn('number', 'Prescription');
+       
+          dataTable3.addRows(statevspres_row);
+
+          // Set chart options
+          var options3 = {'title':'State vs Prescription',
+                         'width':1000,
+                         'height':500,
+                         'backgroundColor':'#FAF6F5',
+                         'color':'red',
+                         'chartArea': {'width': '90%', 'height': '80%'},
+                         'legend': {'position': 'bottom', 'alignment':'center'}
+          };
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart3 = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+          chart3.draw(dataTable3, options3);
+      }
+
+      function drawChart4() {
+          var specvspres_col=<%- specvspres_col %>;
+          var specvspres_row=<%- specvspres_row %>;
+
+          // Create the data table.
+          var dataTable4 = new google.visualization.DataTable();
+          dataTable4.addColumn('string', 'Specialization');
+          dataTable4.addColumn('number', 'Prescription');
+       
+          dataTable4.addRows(specvspres_row);
+
+          // Set chart options
+          var options4 = {'title':'Specialization vs Prescription',
+                         'width':1000,
+                         'height':500,
+                         'backgroundColor':'#FAF6F5',
+                         'color':'red',
+                         'chartArea': {'width': '90%', 'height': '80%'},
+                         'legend': {'position': 'bottom', 'alignment':'center'}
+          };
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart4 = new google.visualization.ColumnChart(document.getElementById('chart_div4'));
+          chart4.draw(dataTable4, options4);
+      }
+
+      function drawChart5() {
+          var statevsdeath_columns=<%- statevsdeath_columns %>;
+          var statevsdeath_rows=<%- statevsdeath_rows %>;
+
+          // Create the data table.
+          var dataTable5 = new google.visualization.DataTable();
+          dataTable5.addColumn('string', 'State');
+          dataTable5.addColumn('number', 'Deaths');
+       
+          dataTable5.addRows(statevsdeath_rows);
+
+          // Set chart options
+          var options5 = {'title':'State vs Deaths',
+                         'width':1000,
+                         'height':500,
+                         'backgroundColor':'#FAF6F5',
+                         'color':'red',
+                         'chartArea': {'width': '90%', 'height': '80%'},
+                         'legend': {'position': 'bottom', 'alignment':'center'}
+          };
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart5 = new google.visualization.ColumnChart(document.getElementById('chart_div5'));
+          chart5.draw(dataTable5, options5);
+      }
+
     </script>
   </head>
 
@@ -110,6 +191,18 @@
           <!--Div that will hold the pie chart-->
           <div style="position: relative;width: 700px;" id="chart_div1"></div>
           <div style="position: relative;width: 250px;" id="chart_div2"></div>
+    </div>
+
+    <div>
+          <div style="position: relative;width: 1000px;" id="chart_div3"></div>
+    </div>
+
+    <div>
+          <div style="position: relative;width: 1000px;" id="chart_div4"></div>
+    </div>
+
+    <div>
+          <div style="position: relative;width: 1000px;" id="chart_div5"></div>
     </div>
 
   </body>

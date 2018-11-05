@@ -295,7 +295,7 @@ module.exports.dashboard =  async function(req, res) {
     statevsdeath_rows = []
 
     stateVsDeathRatio.forEach(function(row) {
-        statevsdeath_rows.push([row._id, row.ratio])
+        statevsdeath_rows.push([row._id, row.ratio*10000])
     })
     
     res.render('dashboard', {

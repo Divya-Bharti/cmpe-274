@@ -51,12 +51,13 @@
           dataTable.addRows(tableRow);
 
           // Set chart options
-          var options = {'title':'State vs Deaths',
+          var options = {'title':'State vs Deaths Caused By Opioid Overdose',
                          'width':500,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
-                         'legend': {'position': 'bottom', 'alignment':'center'}
+                         'colors': ['red'],
+                         // 'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
           // Instantiate and draw our chart, passing in some options.
@@ -79,6 +80,7 @@
                       'width':250,
                       'height':300,
                       'backgroundColor':'#FAF6F5',
+                      'colors': ['Blue', 'Pink'],
                       'legend': {'position': 'bottom', 'alignment':'center'},
                       'chartArea': {'width': '80%', 'height': '60%'}
         };
@@ -99,7 +101,7 @@
           dataTable3.addRows(statevspres_row);
 
           // Set chart options
-          var options3 = {'title':'State vs Prescription',
+          var options3 = {'title':'Top 10 Opioid Drug Prescribed',
                          'width':500,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
@@ -124,7 +126,7 @@
           dataTable4.addRows(specvspres_row);
 
           // Set chart options
-          var options4 = {'title':'Specialization vs Prescription',
+          var options4 = {'title':'State vs # Opioid Drugs Prescribed',
                          'width':500,
                          'height':300,
                          'backgroundColor':'#FAF6F5',
@@ -149,7 +151,7 @@
           dataTable5.addRows(statevsdeath_rows);
 
           // Set chart options
-          var options5 = {'title':'State vs Deaths',
+          var options5 = {'title':'State vs Death Rate Due to Opioid Consumption ( x 10^(-4))',
                          'width':500,
                          'height':300,
                          'backgroundColor':'#FAF6F5',

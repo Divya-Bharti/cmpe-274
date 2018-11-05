@@ -3,16 +3,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // create a schema
-var overdoseNew = new Schema({
-  State: String,
-  Population:Number,
-  Deaths:Number,
-  // Abbrev:String
-});
+var prescriberinfo = new Schema({
+  Gender: String,
+  State:String,
+  Speciality:String
+},{ collection : 'prescriberinfos' }); 
 
 // the schema is useless so far
 // we need to create a model using it
-var OverNew = mongoose.model('overdoseNew', overdoseNew);
+var prescriberInfo = mongoose.model('prescriberinfo', prescriberinfo );
 
 // make this available to our users in our Node applications
-module.exports = OverNew;
+module.exports = prescriberInfo;

@@ -1,3 +1,7 @@
+var Overdose = require('../models/overdose');
+var OverdoseNew = require('../models/overdoseNew');
+var PrescriberInfo = require('../models/prescriberinfo');
+
 /*
  * GET home page.
  */
@@ -106,8 +110,6 @@ module.exports.vijay = function(request, result)
 };
 
 
-var Overdose = require('../models/overdose');
-var OverdoseNew = require('../models/overdoseNew');
 
 /*
  * GET overdose.
@@ -207,25 +209,33 @@ module.exports.aboutUs = function(request, result)
 module.exports.dashboard = function(request, result) 
 {
 	
-	OverdoseNew.find({}, function(err, results){
+	// OverdoseNew.find({}, function(err, results){
 		
-		var columns =["State","Deaths"];
+	// 	var columns =["State","Deaths"];
+	// 	var tableRow = [];
 		
-		 var tableRow = [];
+	// 	results.forEach(function (row) {
+	// 	    tableRow.push([row.State,row.Deaths]);
+	// 	});
 		
-		 
-			results.forEach(function (row) {
-		    tableRow.push([row.State,row.Deaths]);
-		    });
-			
-		    console.log(tableRow);
-		 
-	
-		
-	    result.render('dashboard', {columns : JSON.stringify(columns),tableRow:JSON.stringify(tableRow)});
-		
-	    });
+	//     result.render('dashboard', {columns : JSON.stringify(columns),tableRow:JSON.stringify(tableRow)});
+	// });
+
+    PrescriberInfo.find({}, function(err, results){
         
+        var columns =["Gender", "State"];
+        var tableRow = [];
+         
+        results.forEach(function (row) {
+            tableRow.push([row.Gender]);
+        });
+
+        console.log(tableRow);
+         
+        result.render('dashboard', {columns : JSON.stringify(columns), tableRow:JSON.stringify(tableRow)});
+    }).limit(100);
+
+
          
 };
 

@@ -44,11 +44,31 @@
           var tableRow=<%- tableRow %>;
 
           // Create the data table.
-          var dataTable = new google.visualization.DataTable();
-          dataTable.addColumn('string', 'State');
-          dataTable.addColumn('number', 'Deaths by Opioid Overdose');
-       
-          dataTable.addRows(tableRow);
+          // var dataTable = new google.visualization.DataTable();
+          // dataTable.addColumn('string', 'State');
+          // dataTable.addColumn('number', 'Deaths by Opioid Overdose');
+          // dataTable.addRows(tableRow);
+
+          // var dataTable = new google.visualization.DataTable([
+          //     ['State', 'Deaths by Opioid Overdose', {role : 'style'}],
+          //     ['tableRow[0]', 'color: gray']
+
+          //   ]);
+
+          var dataTable = google.visualization.arrayToDataTable([
+            ['State', 'Deaths by Opioid Overdose', { role: 'style' } ],
+            [tableRow[0][0], tableRow[0][1], 'color: blue'],
+            [tableRow[1][0], tableRow[1][1], 'opacity: 0.5'],
+            [tableRow[2][0], tableRow[2][1], 'color: blue'],
+            [tableRow[3][0], tableRow[3][1], 'opacity: 0.5'],
+            [tableRow[4][0], tableRow[4][1], 'opacity: 0.5'],
+            [tableRow[5][0], tableRow[5][1], 'opacity: 0.5'],
+            [tableRow[6][0], tableRow[6][1], 'opacity: 0.5'],
+            [tableRow[7][0], tableRow[7][1], 'opacity: 0.5'],
+            [tableRow[8][0], tableRow[8][1], 'opacity: 0.5'],
+            [tableRow[9][0], tableRow[9][1], 'opacity: 0.5'],
+      ]);
+
 
           // Set chart options
           var options = {'title':'State vs Deaths Caused By Opioid Overdose',
@@ -56,7 +76,6 @@
                          'height':300,
                          'backgroundColor':'#FAF6F5',
                          'chartArea': {'width': '80%', 'height': '60%'},
-                         'colors': ['red'],
                          'legend': {'position': 'bottom', 'alignment':'center'}
           };
 
@@ -69,7 +88,7 @@
           var M=<%- male %>;
           var F=<%- female %>;
 
-          var data = google.visualization.arrayToDataTable([
+        var data = google.visualization.arrayToDataTable([
           ['Gender', 'Type'],
           ['Male', M],
           ['Female', F],
@@ -80,7 +99,7 @@
                       'width':250,
                       'height':300,
                       'backgroundColor':'#FAF6F5',
-                      'colors': ['Blue', 'Pink'],
+                      'colors': ['#80aaff', '#ff4d6a'],
                       'legend': {'position': 'bottom', 'alignment':'center'},
                       'chartArea': {'width': '80%', 'height': '60%'}
         };
@@ -94,11 +113,25 @@
           var statevspres_row=<%- statevspres_row %>;
 
           // Create the data table.
-          var dataTable3 = new google.visualization.DataTable();
-          dataTable3.addColumn('string', 'State');
-          dataTable3.addColumn('number', 'Prescription Count');
+          // var dataTable3 = new google.visualization.DataTable();
+          // dataTable3.addColumn('string', 'State');
+          // dataTable3.addColumn('number', 'Prescription Count');
        
-          dataTable3.addRows(statevspres_row);
+          // dataTable3.addRows(statevspres_row);
+
+          var dataTable3 = google.visualization.arrayToDataTable([
+            ['State', 'Prescription Count', { role: 'style' } ],
+            [statevspres_row[0][0], statevspres_row[0][1], 'opacity: 0.5'],
+            [statevspres_row[1][0], statevspres_row[1][1], 'opacity: 0.5'],
+            [statevspres_row[2][0], statevspres_row[2][1], 'opacity: 0.5'],
+            [statevspres_row[3][0], statevspres_row[3][1], 'opacity: 0.5'],
+            [statevspres_row[4][0], statevspres_row[4][1], 'opacity: 0.5'],
+            [statevspres_row[5][0], statevspres_row[5][1], 'opacity: 0.5'],
+            [statevspres_row[6][0], statevspres_row[6][1], 'opacity: 0.5'],
+            [statevspres_row[7][0], statevspres_row[7][1], 'opacity: 0.5'],
+            [statevspres_row[8][0], statevspres_row[8][1], 'color: blue'],
+            [statevspres_row[9][0], statevspres_row[9][1], 'color: blue'],
+          ]);
 
           // Set chart options
           var options3 = {'title':'Top 10 States with most Opioid Drugs Prescribed',
@@ -119,11 +152,25 @@
           var specvspres_row=<%- specvspres_row %>;
 
           // Create the data table.
-          var dataTable4 = new google.visualization.DataTable();
-          dataTable4.addColumn('string', 'Specialization');
-          dataTable4.addColumn('number', 'Number of drugs prescribed by the Doctor');
+          // var dataTable4 = new google.visualization.DataTable();
+          // dataTable4.addColumn('string', 'Specialization');
+          // dataTable4.addColumn('number', 'Number of drugs prescribed by the Doctor');
        
-          dataTable4.addRows(specvspres_row);
+          // dataTable4.addRows(specvspres_row);
+
+          var dataTable4 = google.visualization.arrayToDataTable([
+            ['Specialization', 'Number of drugs prescribed by the Doctor', { role: 'style' } ],
+            [specvspres_row[0][0], specvspres_row[0][1], 'color : blue'],
+            [specvspres_row[1][0], specvspres_row[1][1], 'color : blue'],
+            [specvspres_row[2][0], specvspres_row[2][1], 'color : blue'],
+            [specvspres_row[3][0], specvspres_row[3][1], 'opacity: 0.5'],
+            [specvspres_row[4][0], specvspres_row[4][1], 'opacity: 0.5'],
+            [specvspres_row[5][0], specvspres_row[5][1], 'opacity: 0.5'],
+            [specvspres_row[6][0], specvspres_row[6][1], 'opacity: 0.5'],
+            [specvspres_row[7][0], specvspres_row[7][1], 'opacity: 0.5'],
+            [specvspres_row[8][0], specvspres_row[8][1], 'opacity: 0.5'],
+            [specvspres_row[9][0], specvspres_row[9][1], 'opacity: 0.5'],
+          ]);
 
           // Set chart options
           var options4 = {'title':'Specialty vs # Opioid Drugs Prescribed ( x 10^(4))',
@@ -144,11 +191,25 @@
           var statevsdeath_rows=<%- statevsdeath_rows %>;
 
           // Create the data table.
-          var dataTable5 = new google.visualization.DataTable();
-          dataTable5.addColumn('string', 'State');
-          dataTable5.addColumn('number', 'Death Ratio (Deaths by Opioid Overdose / Population)');
+          // var dataTable5 = new google.visualization.DataTable();
+          // dataTable5.addColumn('string', 'State');
+          // dataTable5.addColumn('number', 'Death Ratio (Deaths by Opioid Overdose / Population)');
        
-          dataTable5.addRows(statevsdeath_rows);
+          // dataTable5.addRows(statevsdeath_rows);
+
+          var dataTable5 = google.visualization.arrayToDataTable([
+            ['State', 'Death Ratio (Deaths by Opioid Overdose/Population)', { role: 'style' } ],
+            [statevsdeath_rows[0][0], statevsdeath_rows[0][1], 'color : blue'],
+            [statevsdeath_rows[1][0], statevsdeath_rows[1][1], 'color : blue'],
+            [statevsdeath_rows[2][0], statevsdeath_rows[2][1], 'opacity: 0.5'],
+            [statevsdeath_rows[3][0], statevsdeath_rows[3][1], 'opacity: 0.5'],
+            [statevsdeath_rows[4][0], statevsdeath_rows[4][1], 'opacity: 0.5'],
+            [statevsdeath_rows[5][0], statevsdeath_rows[5][1], 'opacity: 0.5'],
+            [statevsdeath_rows[6][0], statevsdeath_rows[6][1], 'opacity: 0.5'],
+            [statevsdeath_rows[7][0], statevsdeath_rows[7][1], 'opacity: 0.5'],
+            [statevsdeath_rows[8][0], statevsdeath_rows[8][1], 'opacity: 0.5'],
+            [statevsdeath_rows[9][0], statevsdeath_rows[9][1], 'opacity: 0.5'],
+          ]);
 
           // Set chart options
           var options5 = {'title':'State vs Death Rate Due to Opioid Consumption ( x 10^(-4))',

@@ -156,11 +156,19 @@ module.exports.overdoseGet = function(request, result)
 };
 
 /*
- * GET overdose for State.
+ * GET for to add new overdose
  */
 module.exports.overdoseNewForm = function(request, result) 
 {
     result.render('addForm');  
+};
+
+/*
+ * GET form to edit overdose
+ */
+module.exports.overdoseEditForm = function(request, result) 
+{
+    result.render('editForm');  
 };
 
 /*

@@ -107,6 +107,11 @@ router.get('/overdose/:id', ctrlMain.overdoseGet);
 router.get('/newoverdose', ctrlMain.overdoseNewForm);
 
 /*
+ * GER form to edit existing data
+ */
+router.get('/editoverdose', ctrlMain.overdoseEditForm);
+
+/*
  * DELETE Overdose page.
  */
 router.delete('/delete/:id', ctrlMain.overdoseDelete);

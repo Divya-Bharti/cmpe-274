@@ -101,6 +101,10 @@ router.get('/overdose', ctrlMain.overdoseGetAll);
  */
 router.get('/overdose/:id', ctrlMain.overdoseGet);
 
+/*
+ * GET form for new data
+ */
+router.get('/newoverdose', ctrlMain.overdoseNewForm);
 
 /*
  * DELETE Overdose page.

@@ -155,8 +155,13 @@ module.exports.overdoseGet = function(request, result)
    
 };
 
-
-
+/*
+ * GET overdose for State.
+ */
+module.exports.overdoseNewForm = function(request, result) 
+{
+    result.render('addForm');  
+};
 
 /*
  * POST overdose.

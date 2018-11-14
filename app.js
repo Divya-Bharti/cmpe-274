@@ -6,6 +6,8 @@ app.set('views', __dirname + '/app_server/views');
 
 var index = require('./app_server/routes/index.js')
 
+
+
 app.use('/', index);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));

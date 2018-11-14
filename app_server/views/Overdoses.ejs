@@ -105,8 +105,8 @@
            <td><%= data[i].Population %></td>
            <td><%= data[i].Deaths %></td>
            <td><%= data[i].Abbrev %></td> 
-           <td> <button id = <%= data[i].State %> onclick = "passID(this.id)"> Delete </button></td>
-           <td> <button id = <%= data[i].State %> onclick = "updateID(this.id)"> Update </button></td>
+           <td> <button id = <%= data[i].State %> onclick = "passID('<%= data[i].State %>')"> Delete </button></td>
+           <td> <button id = <%= data[i].State %> onclick = "updateID('<%= data[i].State %>')"> Update </button></td>
            
   
          </tr>
@@ -155,6 +155,7 @@
   });
 
   function passID(clickedID) {
+	 
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -172,6 +173,7 @@
   }
 
   function updateID(clickedID) {
+	 
       window.open("http://localhost:3000/editoverdose/"+clickedID ,"_self");
     }
 

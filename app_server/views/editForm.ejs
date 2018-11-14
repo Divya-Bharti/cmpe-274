@@ -8,13 +8,13 @@
    <script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
 </head>
 
-<body>
+<body onload = "init()">
     <div class="form-popup" id="myAddForm">
       <form  class="form-container">
         <h1>Edit Form</h1>
 
         <label for="state"><b>State</b></label>
-        <input type="text" id = "state" placeholder="Enter State Name" name="state" required>
+        <input type="text" id = "state" placeholder="Enter State Name" name="state" readonly>
 
         <label for="pop"><b>Population</b></label>
         <input type="text" id = "population" placeholder="Enter Population of state" name="pop" required>
@@ -29,6 +29,13 @@
       </form>
     </div>
     <script type="text/javascript">
+        
+        function init() {
+          link = window.location.pathname;
+          vals = link.split("/");
+          document.getElementById('state').value = vals[vals.length-1];
+        }
+        
       function openEditForm() {
             state_name = document.getElementById("state").value.toLowerCase();
             population = document.getElementById("population").value;

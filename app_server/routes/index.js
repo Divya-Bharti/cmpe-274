@@ -87,11 +87,6 @@ router.get('/aboutUs/indira', ctrlMain.indira);
 router.get('/aboutUs/vijay', ctrlMain.vijay);
 
 /*
- * POST Overdose page.
- */
-router.post('/overdose', ctrlMain.overdosePost);
-
-/*
  * GET Overdose page.
  */
 router.get('/overdose', ctrlMain.overdoseGetAll);
@@ -109,17 +104,22 @@ router.get('/newoverdose', ctrlMain.overdoseNewForm);
 /*
  * GER form to edit existing data
  */
-router.get('/editoverdose', ctrlMain.overdoseEditForm);
+router.get('/editoverdose/:id', ctrlMain.overdoseEditForm);
+
+/*
+ * POST Overdose page.
+ */
+router.post('/addOverdose', ctrlMain.overdosePost);
+
+/*
+ * PUT Overdose page.
+ */
+router.put('/overdose/:id', ctrlMain.overdoseUpdate);
 
 /*
  * DELETE Overdose page.
  */
 router.delete('/delete/:id', ctrlMain.overdoseDelete);
-
-/*
- * PUT Overdose page.
- */
-router.put('/update/:id', ctrlMain.overdoseUpdate);
 
 /*
  * POST METHOD FOR SEARCHING AND RETREIVING OVERDOSE DATA

@@ -78,8 +78,6 @@
 
             data_string = JSON.stringify(data_val);
 
-            alert(data_string)
-
             data_string_update = JSON.stringify(data_val);
             var settings = {
               "async": true,
@@ -95,7 +93,7 @@
             }
 
             $.ajax(settings).done(function (response) {
-              alert("DATA ADDED!");
+              alert("Data Updated");
               window.open("http://localhost:3000/overdose/","_self");
             });
         }

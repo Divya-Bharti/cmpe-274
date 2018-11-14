@@ -105,8 +105,8 @@
            <td><%= data[i].Population %></td>
            <td><%= data[i].Deaths %></td>
            <td><%= data[i].Abbrev %></td> 
-           <td> <button id = <%= data[i].id %> onclick = "passID(this.id)"> Delete </button></td>
-           <td> <button id = <%= data[i].id %> onclick = "updateID(this.id)"> Update </button></td>
+           <td> <button id = <%= data[i].State %> onclick = "passID(this.id)"> Delete </button></td>
+           <td> <button id = <%= data[i].State %> onclick = "updateID(this.id)"> Update </button></td>
            
   
          </tr>
@@ -120,12 +120,12 @@
       event.preventDefault();
       searched_state = document.getElementById("searchedState").value.toLowerCase();
 
-      // alert("The value searched is " + searched_state);
+       //alert("The value searched is " + searched_state);
 
       var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:3000/" + searched_state +"/searchoverdose",
+        "url": "http://localhost:3000/search/" + searched_state ,
         "method": "GET",
         "headers": {
           "Content-Type": "application/json",
@@ -158,7 +158,7 @@
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://localhost:3000/"+clickedID+"/delete",
+      "url": "http://localhost:3000/delete/"+clickedID,
       "method": "DELETE",
       "headers": {
         "Cache-Control": "no-cache"
@@ -192,7 +192,7 @@
       var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:3000/"+clickedID+"/update",
+        "url": "http://localhost:3000/update/"+clickedID,
         "method": "PUT",
         "headers": {
         "Content-Type": "application/json",

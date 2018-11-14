@@ -114,7 +114,7 @@ module.exports.vijay = function(request, result)
 /*
  * GET overdose.
  */
-module.exports.overdoseGet = function(request, result) 
+module.exports.overdoseGetAll = function(request, result) 
 {
 	/* code to save to the db.. use later
 	var o = new Overdose();
@@ -141,6 +141,23 @@ module.exports.overdoseGet = function(request, result)
 
 };
 
+
+/*
+ * GET overdose for State.
+ */
+module.exports.overdoseGet = function(request, result) 
+{
+	Overdose.find({State: request.params.id}, function(err, results){
+
+    result.render('Overdoses', {data : results});
+    result.send(results);
+    });
+   
+};
+
+
+
+
 /*
  * POST overdose.
  */
@@ -164,17 +181,25 @@ module.exports.overdoseGet = function(request, result)
 };
 
 module.exports.overdoseUpdate = function (req, res) 
-{
+{         	console.log(req.params.id+" req.params.id");
     //var update = JSON.parse(req.body);
-    Overdose.findByIdAndUpdate(req.params.id, { $set: req.body}, function (err, Overdose) {
-        if (err) return next(err);
+    Overdose.findOneAndUpdate({"State" :req.params.id}, { $set: req.body}, function (err, Overdose) {
+    	console.log(req.body+" req.body");
+    	if (err) return next(err);
         res.send(req.body);
     });
 };
 
 module.exports.overdoseDelete = function(req, res) 
-{
+{   /*
     Overdose.findByIdAndRemove(req.params.id, function (err) {
+    	console.log(req.params.id+" req.params.id");
+        if (err) return next(err);
+        res.send('Deleted successfully!');
+    })
+    */
+    Overdose.findOneAndDelete({"State" :req.params.id}, function (err) {
+    	console.log(req.params.id+" req.params.id");
         if (err) return next(err);
         res.send('Deleted successfully!');
     })

@@ -94,22 +94,28 @@ router.post('/overdose', ctrlMain.overdosePost);
 /*
  * GET Overdose page.
  */
-router.get('/overdose', ctrlMain.overdoseGet);
+router.get('/overdose', ctrlMain.overdoseGetAll);
+
+/*
+ * GET Overdose page for one state
+ */
+router.get('/overdose/:id', ctrlMain.overdoseGet);
+
 
 /*
  * DELETE Overdose page.
  */
-router.delete('/:id/delete', ctrlMain.overdoseDelete);
+router.delete('/delete/:id', ctrlMain.overdoseDelete);
 
 /*
  * PUT Overdose page.
  */
-router.put('/:id/update', ctrlMain.overdoseUpdate);
+router.put('/update/:id', ctrlMain.overdoseUpdate);
 
 /*
  * POST METHOD FOR SEARCHING AND RETREIVING OVERDOSE DATA
  */
-router.get('/:state/searchoverdose', ctrlMain.overdoseSearch);
+router.get('/search/:state', ctrlMain.overdoseSearch);
 
 // get dashboard
 router.get('/dashboard', ctrlMain.dashboard);

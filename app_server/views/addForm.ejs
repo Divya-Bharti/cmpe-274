@@ -4,6 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/index.css"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <script type="text/javascript" src="/jquery-ui-theme/external/jquery/jquery.js"></script>
    <script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
 </head>
@@ -25,7 +26,7 @@
         <label for="abbr"><b>State Abbreviation</b></label>
         <input type="text" id = "abbreviation" placeholder="Enter Abbreviation for state" name="abbr" required>
 
-        <button type="submit" id = "submitAdd" class="btn" onclick="openAddForm()">Add Record</button>
+        <button type="submit" id = "submitAdd" class="btn" >Add Record</button>
       </form>
     </div>
     <script type="text/javascript">
@@ -49,7 +50,7 @@
             var settings = {
               "async": true,
               "crossDomain": true,
-              "url": "http://localhost:3000/overdose",
+              "url": "http://localhost:3000/addOverdose",
               "method": "POST",
               "headers": {
                 "Content-Type": "application/json",
@@ -61,7 +62,7 @@
 
             $.ajax(settings).done(function (response) {
               alert("DATA ADDED!");
-
+              window.open("http://localhost:3000/overdose/","_self");
             });
         }
     </script>

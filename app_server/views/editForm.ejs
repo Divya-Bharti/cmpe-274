@@ -57,7 +57,7 @@
             var settings = {
               "async": true,
               "crossDomain": true,
-              "url": "http://localhost:3000/update/"+state_name,
+              "url": "http://localhost:3000/overdose/"+state_name,
               "method": "PUT",
               "headers": {
               "Content-Type": "application/json",
@@ -69,7 +69,7 @@
 
             $.ajax(settings).done(function (response) {
               alert("DATA ADDED!");
-
+              window.open("http://localhost:3000/overdose/","_self");
             });
         }
     </script>

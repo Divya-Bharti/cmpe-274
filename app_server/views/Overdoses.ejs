@@ -41,7 +41,7 @@
   </div>
 </div>
 
-<div class="form-popup" id="myAddForm">
+<!-- <div class="form-popup" id="myAddForm">
   <form  class="form-container">
     <h1>Add Form</h1>
 
@@ -81,7 +81,7 @@
     <button type="submit" id = "submitUpdate" class="btn">Update Record</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
-</div>
+</div> -->
 
 <table id="DrugOverdoseTable">
         <thead>
@@ -172,97 +172,12 @@
   }
 
   function updateID(clickedID) {
-      openUpdateForm();
-
-      $( "#submitUpdate" ).click( function( event ) {
-      event.preventDefault();
-      state_name = document.getElementById("Ustate").value.toLowerCase();
-      population = document.getElementById("Upopulation").value;
-      death = document.getElementById("Udeath").value;
-      abbr = document.getElementById("Uabbreviation").value; 
-
-      data_val = {
-        "State":state_name,
-        "Population":population,
-        "Deaths":death,
-        "Abbrev":abbr
-      }
-
-      data_string_update = JSON.stringify(data_val);
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://localhost:3000/overdose/"+clickedID,
-        "method": "PUT",
-        "headers": {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-cache"
-        },
-        "processData": false,
-        "data": data_string_update
-      }
-      $.ajax(settings).done(function (response) {
-        alert("DATA UPDATED!")
-        closeForm();
-        document.location.reload();
-
-      });
-
-      } );
+      window.open("http://localhost:3000/editoverdose/"+clickedID ,"_self");
     }
-</script>
 
-<script>
   function openAddForm() {
-      document.getElementById("myAddForm").style.display = "block";
+      window.open("http://localhost:3000/newoverdose/" ,"_self");   
 
-      $( "#submitAdd" ).click( function( event ) {
-      event.preventDefault();
-      state_name = document.getElementById("state").value.toLowerCase();
-      population = document.getElementById("population").value;
-      death = document.getElementById("death").value;
-      abbr = document.getElementById("abbreviation").value;
-
-      data_val = {
-        "State":state_name,
-        "Population":population,
-        "Deaths":death,
-        "Abbrev":abbr
-      }
-
-      data_string = JSON.stringify(data_val);
-
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://localhost:3000/overdose",
-        "method": "POST",
-        "headers": {
-          "Content-Type": "application/json",
-          "Cache-Control": "no-cache"
-        },
-        "processData": false,
-        "data": data_string
-    }
-
-$.ajax(settings).done(function (response) {
-  alert("DATA ADDED!");
-  closeForm();
-  document.location.reload();
-
-});
-
-      } );     
-
-  }
-
-  function openUpdateForm() {
-      document.getElementById("myUpdateForm").style.display = "block";
-  }
-  
-  function closeForm() {
-      document.getElementById("myAddForm").style.display = "none";
-      document.getElementById("myUpdateForm").style.display = "none";
   }
   </script>
 

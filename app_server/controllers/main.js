@@ -150,7 +150,7 @@ module.exports.overdoseGet = function(request, result)
 	Overdose.find({State: request.params.id}, function(err, results){
 
     result.render('Overdoses', {data : results});
-    result.send(results);
+    // result.send(results);
     });
    
 };

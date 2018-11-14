@@ -6,29 +6,56 @@
    <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/index.css"> -->
    <script type="text/javascript" src="/jquery-ui-theme/external/jquery/jquery.js"></script>
    <script type="text/javascript" src="/jquery-ui-theme/jquery-ui.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="/stylesheets/editForm.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/feedback.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/popup.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/aboutUs.css">
 </head>
 
-<body onload = "init()">
-    <div class="form-popup" id="myAddForm">
-      <form  class="form-container">
-        <h1>Edit Form</h1>
+<body onload = "init()" class="bg-img">
 
-        <label for="state"><b>State</b></label>
-        <input type="text" id = "state" placeholder="Enter State Name" name="state" readonly>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 
-        <label for="pop"><b>Population</b></label>
-        <input type="text" id = "population" placeholder="Enter Population of state" name="pop" required>
-        
-        <label for="death"><b>Deaths</b></label>
-        <input type="text" id = "death" placeholder="Enter no. of deaths caused by opm overdose" name="death" required>
-        
-        <label for="abbr"><b>State Abbreviation</b></label>
-        <input type="text" id = "abbreviation" placeholder="Enter Abbreviation for state" name="abbr" required>
+  <!-- <a href="/home"><h2 class="center" >Opioid Webpage</h2></a> -->
 
-        <button type="submit" id = "submitAdd" class="btn" onclick="openEditForm()">Update Record</button>
-      </form>
-    </div>
-    <script type="text/javascript">
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/home">Homepage</a>
+    <!-- <a href="/drugname">Drug Name</a> -->
+    <a href="/StateVsDeath">State vs Opioid Deaths</a>
+    <a href="/StateVsPop">State vs Population</a>
+    <a href="/heatmap">HeatMap</a>
+    <a href="/feedback">Feedback</a>
+    <a href="/aboutUs">About Us</a>
+    <a href="/overdose">Overdoses</a>
+    <a href="/dashboard">Dashboard</a>
+    <!-- <a href="#">About Us</a> -->
+  </div>
+  
+  <div id="myAddForm" >
+    <form class="container">
+      <h1>Update Data Form</h1>
+
+      <label for="state"><b>State</b></label>
+      <input type="text" id = "state" placeholder="Enter State Name" name="state" required>
+
+      <label for="pop"><b>Population</b></label>
+      <input type="text" id = "population" placeholder="Enter Population of state" name="pop"required>
+
+      <label for="death"><b>Deaths</b></label>
+      <input type="text" id = "death" placeholder="Enter no. of deaths caused by opm overdose" name="death" required>
+          
+      <label for="abbr"><b>State Abbreviation</b></label>
+      <input type="text" id = "abbreviation" placeholder="Enter Abbreviation for state" name="abbr" required>
+
+      <button type="submit" class="btn" id="submitAdd" onclick="openEditForm()" >Update Record</button>
+    </form>
+  </div>
+
+</body>
+
+<script type="text/javascript">
         
         function init() {
           link = window.location.pathname;
@@ -73,5 +100,6 @@
             });
         }
     </script>
-</body>
+
+    <script type="text/javascript" src="/routes/nav.js"></script>
 </html>

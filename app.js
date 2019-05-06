@@ -12,7 +12,7 @@ app.use('/', index);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/app_server"));
-app.listen(3000);
+app.listen(4000);
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
